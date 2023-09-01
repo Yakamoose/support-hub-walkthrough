@@ -1,13 +1,282 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <title>SupportHubWalkthrough</title>
+  <title>Support Hub Walkthrough</title>
   <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+  <style>
+    @font-face {
+      font-display: swap;
+      font-family: "visa-font";
+      src: url('./assets/fonts/VisaDialect-Regular.ttf')
+        /* src: url("https://cdn.visa.com/v2/assets/fonts/types/OpenSans-Light.woff"); */
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: "visa-font-semi-bold";
+      src: url('./assets/fonts/VisaDialect-Semibold.ttf')
+        /* src: url("https://cdn.visa.com/v2/assets/fonts/types/OpenSans-SemiBold.woff"); */
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: 'visa-bold';
+      src: url('./assets/fonts/VisaDialect-Bold.ttf');
+      /* src: url("https://cdn.visa.com/v2/assets/fonts/types/OpenSans-Bold.woff");
+         ???Not sure about this link */
+    }
+
+    @font-face {
+      font-family: 'visa-med';
+      src: url('./assets/fonts/VisaDialect-Medium.ttf');
+    }
+
+    :root {
+      --brand-primary-color: #1434CB;
+      --brand-primary-light-color: #3B57DE;
+      --brand-primary-dark-color: #021E4C;
+      --brand-secondary-color: #FCC015;
+      --brand-secondary-light-color: #FFD700;
+      --brand-secondary-dark-color: #F7B600;
+      --brand-tertiary-7-color: #2C2C2C;
+      --brand-tertiary-6-color: #5C5C5C;
+      --brand-tertiary-5-color: #979797;
+      --brand-tertiary-4-color: #B9B9B9;
+      --brand-tertiary-3-color: #DEDEDE;
+      --brand-tertiary-2-color: #EEEEEE;
+      --brand-tertiary-1-color: #F7F7F7;
+      --brand-white-color: white;
+      --brand-alert: #D50000;
+      --visa-green: #40996B;
+      --visa-light-blue: #2B94F5;
+      --visa-rouge-red: #D65168;
+      --visa-sorbet: #FFEF99;
+    }
+
+    * {
+      font-family: 'visa-font', sans-serif, Tahoma;
+    }
+
+    .shub-container {
+      height: 100vh;
+      width: 100vw;
+      min-width: 1500px;
+      overflow: auto;
+      position: relative;
+    }
+
+    .nav-modal-cont {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(128, 128, 128, 0.9);
+      padding: 2.5%;
+      z-index: 1000;
+      display: none;
+    }
+
+    .nav-modal-cont .nav-modal {
+      background-color: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .nav-modal-cont .nav-modal .nav-menu {
+      border-radius: 20px 0 0 20px;
+      display: flex;
+      flex-direction: column;
+      border-right: 2px solid var(--brand-primary-color);
+      padding: 0;
+      /* overflow: auto; */
+    }
+
+    .nav-modal-cont .nav-modal .nav-menu .nav-header {
+      padding: 10%;
+
+    }
+
+    .nav-header img {
+      width: 35%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .nav-menu .nav-header p {
+      color: var(--brand-primary-color);
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .nav-menu .nav-links {
+      padding: 0;
+      margin: 0;
+      overflow: auto;
+
+    }
+
+    .nav-menu .nav-links li {
+      list-style: none;
+      padding: 8% 10%;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .nav-menu .nav-links li:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-menu .nav-links li a {
+      font-size: 14px;
+      font-family: 'visa-font-semi-bold';
+      text-decoration: none;
+    }
+
+    .nav-menu .nav-links li a:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .nav-menu .nav-links li:nth-child(odd),
+    .nav-menu .nav-links li:nth-child(odd) a {
+      background-color: var(--brand-primary-light-color);
+      color: #fff;
+    }
+
+    .nav-menu .nav-links li:nth-child(even),
+    .nav-menu .nav-links li:nth-child(even) a {
+      background-color: #fff;
+      color: var(--brand-primary-light-color);
+    }
+
+    .nav-modal-body-cont {
+      padding: 35px;
+    }
+
+    .nav-modal .nav-modal-content-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-modal-body-cont .nav-modal-content-header h6 {
+      color: var(--brand-primary-color);
+      font-size: 32px;
+      font-family: 'visa-font-semi-bold', sans-serif;
+    }
+
+    .nav-modal .close-btn {
+      cursor: pointer;
+      font-size: 40px;
+      z-index: 2;
+      align-self: flex-start;
+      line-height: 1;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+
+    }
+
+    .nav-modal .close-btn:hover {
+      transform: scale(1.5);
+    }
+
+
+  </style>
 </head>
+
 <body>
   <cb-root></cb-root>
+  <div class="shub-container">
+
+    <button id="openModalButton">Open Modal</button>
+
+    <!-- Custom Modal -->
+    <div id="navModal" class="nav-modal-cont">
+      <div class="container-fluid h-100 nav-modal">
+        <div class="row h-100">
+          <!-- Left Nav -->
+          <nav class="col-3 h-100 nav-menu">
+            <div class="nav-header">
+              <img src="assets/images/visa-logo-sm.png" alt="Visa Logo Image" />
+              <p>Interactive Tour</p>
+            </div>
+
+            <ul class="nav-links">
+              <li><a href="#">Link 1</a></li>
+              <li><a href="#">Link 2</a></li>
+              <li><a href="#">Link 3</a></li>
+              <li><a href="#">Link 4</a></li>
+              <li><a href="#">Link 5</a></li>
+              <li><a href="#">Link 6</a></li>
+              <li><a href="#">Link 7</a></li>
+              <li><a href="#">Link 8</a></li>
+              <li><a href="#">Link 9</a></li>
+              <li><a href="#">Link 10</a></li>
+              <li><a href="#">Link 11</a></li>
+              <li><a href="#">Link 12</a></li>              
+            </ul>
+          </nav>
+
+          <!-- Main Content -->
+          <div class="col-9 nav-modal-body-cont">
+            <div class="nav-modal-content-header">
+              <h6>Welcome!</h6>
+              <span id="closeModalButton" class="close-btn">×</span>
+            </div>
+
+
+            <p>JOURNEY/WT CARDS GO HERE.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+
 </body>
+<script type="module">
+
+  import { WALKTHROUGHS } from './assets/walkthroughs_data.js';
+  console.log(WALKTHROUGHS);
+
+  window.addEventListener('load', function () {
+    // Grab elements
+    const openModalButton = document.getElementById("openModalButton");
+    const closeModalButton = document.getElementById("closeModalButton");
+    const navModal = document.getElementById("navModal");
+
+    // Show the modal shortly after the page loads
+    setTimeout(() => {
+      navModal.style.display = "block";
+    }, 500);
+
+    // Open modal on button click
+    openModalButton.addEventListener("click", function () {
+      navModal.style.display = "block";
+    });
+
+    // Close modal on button click
+    closeModalButton.addEventListener("click", function () {
+      navModal.style.display = "none";
+    });
+  });
+
+
+
+</script>
+
 </html>
