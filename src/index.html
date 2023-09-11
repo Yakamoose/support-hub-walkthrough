@@ -66,11 +66,155 @@
 
     .shub-container {
       height: 100vh;
-      width: 100vw;
+      width: 100%;
       min-width: 1500px;
       overflow: auto;
       position: relative;
+      padding: 40px;
+      display: flex;
     }
+
+    .graphic-container {
+      width: 66%;
+      height: 100%;
+      margin-right: 20px;
+    }
+
+    .graphic-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .graphic-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .details-container {
+      width: 33%;
+      height: 100%;
+    }
+
+    .details-header {
+      display: flex;
+      align-items: center;
+      margin: 5px 10px 20px;
+    }
+
+    .details-header div:first-of-type {
+      margin-right: auto;
+      font-size: 14px;
+    }
+
+    .details-header .visa-logo img {
+      height: 24px;
+      width: auto;
+    }
+
+    .details-header .return-vol {
+      display: flex;
+      align-items: center;
+    }
+
+    .details-header .return-vol p {
+      font-size: 13px;
+      line-height: 1.2;
+      color: var(--brand-primary-color);
+      margin: 0;
+      font-family: 'visa-font-semi-bold', sans-serif;
+    }
+
+    .details-header .return-vol img {
+      height: 32px;
+      width: auto;
+    }
+
+    .hamburger img {
+      height: 40px;
+      width: auto;
+    }
+
+    .details-body {
+      height: calc(100% - 54px - 25px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .wt-details {
+      padding: 32px 35px 10px;
+    }
+
+    .wt-details .wt-category {
+      font-family: 'visa-font-semi-bold', sans-serif;
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+
+    .wt-details .wt-title {
+      font-family: 'visa-font-semi-bold', sans-serif;
+      font-size: 32px;
+      color: var(--brand-primary-light-color);
+      margin-bottom: 0;
+      line-height: 1.2;
+      margin-top: 10px;
+    }
+
+    .step-description {
+      padding: 10px 35px 10px;
+      font-size: 18px;
+      font-family: 'visa-font', sans-serif;
+      line-height: 1.75;
+    }
+
+    .step-description b {
+      font-family: 'visa-font-semi-bold', sans-serif;
+      color: var(--brand-primary-light-color);
+      text-decoration: underline;
+    }
+
+    .details-footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      font-size: 30px;
+      font-family: 'visa-font', sans-serif;
+      font-weight: 100;
+      color: var(--brand-primary-color);
+      padding: 0 34px 23px;
+    }
+
+    .details-footer img {
+      width: 40px;
+      height: auto;
+    }
+
+    .details-footer .btn:disabled {
+      border: none !important;
+    }
+
+    .blue-border {
+      border-radius: 20px;
+      border: 3px solid var(--brand-primary-light-color);
+      overflow: hidden;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     .nav-modal-cont {
       position: fixed;
@@ -79,14 +223,14 @@
       width: 100%;
       height: 100%;
       background-color: rgba(128, 128, 128, 0.9);
-      padding: 2.5%;
+      padding: 40px;
       z-index: 1000;
       display: none;
     }
 
     .nav-modal-cont .nav-modal {
       background-color: #fff;
-      border-radius: 20px;
+      /* border-radius: 20px; */
       overflow: hidden;
     }
 
@@ -94,7 +238,7 @@
       border-radius: 20px 0 0 20px;
       display: flex;
       flex-direction: column;
-      border-right: 2px solid var(--brand-primary-color);
+      border-right: 3px solid var(--brand-primary-color);
       padding: 0;
       /* overflow: auto; */
     }
@@ -119,14 +263,31 @@
     .nav-menu .nav-links {
       padding: 0;
       margin: 0;
-      overflow: auto;
+      overflow: hidden auto;
 
     }
 
     .nav-menu .nav-links li {
       list-style: none;
-      padding: 8% 10%;
+      padding: 20px 10%;
       transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .nav-menu .nav-links li.active {
+      background-color: var(--brand-primary-color);
+    }
+
+    .nav-menu .nav-links li:hover {
+      background-color: rgba(199, 237, 255, .4);
+      cursor: pointer;
+    }
+
+    .nav-menu .nav-links li:hover a {
+      color: var(--brand-primary-color) !important;
+    }
+
+    .nav-menu .nav-links li.active a {
+      color: #fff;
     }
 
     .nav-menu .nav-links li:hover {
@@ -135,38 +296,32 @@
 
     .nav-menu .nav-links li a {
       font-size: 14px;
-      font-family: 'visa-font-semi-bold';
+      font-family: 'visa-font-semi-bold', sans-serif;
       text-decoration: none;
+      color: var(--brand-primary-color);
     }
 
-    .nav-menu .nav-links li a:hover {
+    /* .nav-menu .nav-links li a:hover {
       text-decoration: underline;
       cursor: pointer;
-    }
+    } */
 
-    .nav-menu .nav-links li:nth-child(odd),
-    .nav-menu .nav-links li:nth-child(odd) a {
-      background-color: var(--brand-primary-light-color);
-      color: #fff;
-    }
 
-    .nav-menu .nav-links li:nth-child(even),
-    .nav-menu .nav-links li:nth-child(even) a {
-      background-color: #fff;
-      color: var(--brand-primary-light-color);
-    }
 
     .nav-modal-body-cont {
-      padding: 35px;
+      padding: 60px;
+      position: relative;
+      overflow: hidden auto;
+      max-height: 100%;
     }
 
-    .nav-modal .nav-modal-content-header {
-      display: flex;
+    .nav-modal-body-cont .category-details {
+      /* display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: center; */
     }
 
-    .nav-modal-body-cont .nav-modal-content-header h6 {
+    .nav-modal-body-cont .category-details h6 {
       color: var(--brand-primary-color);
       font-size: 32px;
       font-family: 'visa-font-semi-bold', sans-serif;
@@ -176,70 +331,217 @@
       cursor: pointer;
       font-size: 40px;
       z-index: 2;
-      align-self: flex-start;
-      line-height: 1;
+      line-height: .5;
       transition: transform 0.3s ease, background-color 0.3s ease;
-
+      position: absolute;
+      top: 30px;
+      right: 30px;
     }
 
     .nav-modal .close-btn:hover {
       transform: scale(1.5);
     }
 
+    .cards-container {
+      overflow-y: auto;
+    }
 
+    .category-details {
+      margin-bottom: 30px;
+    }
+
+    .cards {
+      /* display: flex; */
+      /* justify-content: space-between; */
+    }
+
+    .wt-card {
+      /* overflow: hidden; */
+      margin-bottom: 1rem;
+      position: relative;
+
+      display: block;
+      /* To ensure that the image takes up full width */
+      max-width: 100%;
+      /* In case the image is larger than its container */
+    }
+
+    .img-container {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      /* To fit the size of the image */
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 255, 0.7);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .img-container:hover .overlay{
+      /* display: flex; */
+      opacity: 1;
+      /* Show the overlay on hover */
+    }
+
+    .overlay img {
+      width: 14px !important;
+    }
+
+
+    .wt-card .img-container:hover {
+      cursor: pointer;
+    }
+
+    .wt-card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .badge {
+      margin: 12px 5px 0 0;
+      padding: 10px 15px;
+      border-radius: 3px !important;
+    }
+
+    .badge.blue {
+      background-color: #2b92f5 !important;
+    }
+
+    .badge.yellow {
+      background-color: #f7a004 !important;
+      color: #000;
+    }
+
+    .badge.red {
+      background-color: #d55168 !important;
+    }
+
+    .badge.green {
+      background-color: #3f9a6b !important;
+    }
+
+    .card-title {
+      margin-top: 12px;
+      color: var(--brand-primary-color);
+      font-size: 18px;
+      font-family: "visa-font-semi-bold", sans-serif;
+      width: fit-content;
+    }
+
+    .card-title:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .cards .row {
+      margin-bottom: 30px;
+    }
   </style>
 </head>
 
 <body>
   <cb-root></cb-root>
+
   <div class="shub-container">
-
-    <button id="openModalButton">Open Modal</button>
-
-    <!-- Custom Modal -->
-    <div id="navModal" class="nav-modal-cont">
-      <div class="container-fluid h-100 nav-modal">
-        <div class="row h-100">
-          <!-- Left Nav -->
-          <nav class="col-3 h-100 nav-menu">
-            <div class="nav-header">
-              <img src="assets/images/visa-logo-sm.png" alt="Visa Logo Image" />
-              <p>Interactive Tour</p>
-            </div>
-
-            <ul class="nav-links">
-              <li><a href="#">Link 1</a></li>
-              <li><a href="#">Link 2</a></li>
-              <li><a href="#">Link 3</a></li>
-              <li><a href="#">Link 4</a></li>
-              <li><a href="#">Link 5</a></li>
-              <li><a href="#">Link 6</a></li>
-              <li><a href="#">Link 7</a></li>
-              <li><a href="#">Link 8</a></li>
-              <li><a href="#">Link 9</a></li>
-              <li><a href="#">Link 10</a></li>
-              <li><a href="#">Link 11</a></li>
-              <li><a href="#">Link 12</a></li>              
-            </ul>
-          </nav>
-
-          <!-- Main Content -->
-          <div class="col-9 nav-modal-body-cont">
-            <div class="nav-modal-content-header">
-              <h6>Welcome!</h6>
-              <span id="closeModalButton" class="close-btn">×</span>
-            </div>
+    <div class="blue-border graphic-container">
+      <p>Graphic to come</p>
+    </div>
 
 
-            <p>JOURNEY/WT CARDS GO HERE.</p>
+    <div class="details-container">
+      <div class="details-header">
+        <div class="visa-logo">
+          <img src="assets/images/vol-logo.png">
+          <p class="mt-1 mb-0">Interactive Tutorial</p>
+        </div>
+        <div class="return-vol p-2">
+          <p>Return to<br>Visa Online</p>
+          <img src="assets/images/return-arrow.png">
+        </div>
+        <button id="openModalButton" class="hamburger btn">
+          <img src="assets/images/hamburger.png">
+        </button>
+      </div>
+
+      <div class="details-body blue-border">
+        <div>
+          <div class="wt-details">
+            <p class="wt-category"></p>
+            <p class="wt-title"></p>
           </div>
+          <hr>
+          <p class="step-description">
+          </p>
+        </div>
+
+        <div class="details-footer">
+          <button id="back-step" class="btn">
+            <img src="assets/images/arrow-left.png" alt="Back 1 step graphic">
+          </button>
+
+          <p id="current-step-tracker" class="m-0"></p>
+
+          <button id="forward-step" class="btn">
+            <img src="assets/images/arrow-right.png" alt="Forward 1 step graphic">
+          </button>
         </div>
       </div>
+
     </div>
 
 
 
+  </div>
 
+
+
+
+
+
+
+
+
+
+  <!-- Custom Modal -->
+  <div id="navModal" class="nav-modal-cont">
+    <div class="container-fluid h-100 nav-modal blue-border">
+      <div class="row h-100">
+
+        <!-- Left Nav -->
+        <nav class="col-3 h-100 nav-menu">
+          <div class="nav-header">
+            <img src="assets/images/visa-logo-sm.png" alt="Visa Logo Image" />
+            <p>Interactive Tour</p>
+          </div>
+
+          <ul class="nav-links">
+            <li>Lodaing...</li>
+          </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="col-9 nav-modal-body-cont">
+          <span id="closeModalButton" class="close-btn">×</span>
+
+          <div id="cards-container">
+            <div class="category-details d-flex justify-content-between align-items-center"></div>
+            <div class="cards"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
 
 
@@ -249,18 +551,314 @@
 
 </body>
 <script type="module">
-
   import { WALKTHROUGHS } from './assets/walkthroughs_data.js';
-  console.log(WALKTHROUGHS);
+
+  class WTS {
+    categories = [];
+
+    TAGS = {
+      featured: 'Featured',
+      new: 'New',
+      popular: 'Popular',
+      requested: 'Most Requested',
+    };
+
+    constructor(walkthroughs) {
+      this.walkthroughs = walkthroughs;
+      this.logWTS();
+      this.getCategories();
+      this.createNavModalUI();
+    }
+
+    createNavModalUI() {
+      const ulElement = document.querySelector('.nav-links');
+
+      // Remove any existing <li> elements first, to prevent duplicates
+      ulElement.innerHTML = '';
+
+      let firstLiElement = null;
+
+      this.categories.forEach((category, index) => {
+        const liElement = document.createElement('li');
+        const aElement = document.createElement('a');
+
+        aElement.setAttribute('role', 'button');
+        aElement.textContent = category;
+
+        liElement.appendChild(aElement);
+        ulElement.appendChild(liElement);
+
+        // Save a reference to the first <li> element
+        if (index === 0) {
+          firstLiElement = liElement;
+        }
+
+        liElement.addEventListener('click', () => {
+          // Remove 'active' class from all li elements
+          ulElement.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+
+          // Add 'active' class to clicked li element
+          liElement.classList.add('active');
+
+          this.showWalkThroughsFor(category);
+        });
+      });
+
+      // Programmatically "click" the first <li> element to make it active
+      if (firstLiElement) {
+        firstLiElement.click();
+      }
+    }
+
+
+    showWalkThroughsFor(category) {
+      console.log({ category });
+
+      const currentWalkThroughs = this.walkthroughs.filter(wt => wt.category === category);
+      console.log({ currentWalkThroughs });
+
+      const { categoryDescription } = currentWalkThroughs[0];
+      console.log({ categoryDescription });
+
+      this.renderCategoryDetails(category, categoryDescription, currentWalkThroughs[0]);
+      this.renderCardsContainer(currentWalkThroughs);
+    }
+
+    renderCategoryDetails(category, categoryDescription, firstWalkthrough) {
+      const categoryDetailsContainer = document.querySelector('.category-details');
+      categoryDetailsContainer.innerHTML = '';
+
+      const textContainer = document.createElement('div');
+      categoryDetailsContainer.appendChild(textContainer);
+
+      const categoryHeading = document.createElement('h6');
+      categoryHeading.textContent = category;
+      textContainer.appendChild(categoryHeading);
+
+      const categoryDescParagraph = document.createElement('p');
+      categoryDescParagraph.textContent = categoryDescription;
+      categoryDescParagraph.style.marginBottom = 0;
+      textContainer.appendChild(categoryDescParagraph);
+
+      const startTutorialBtn = document.createElement('button');
+      startTutorialBtn.textContent = 'Start tutorials';
+      startTutorialBtn.classList.add('btn', 'btn-primary');
+      startTutorialBtn.addEventListener('click', () => {
+        this.startWalkthrough(firstWalkthrough);
+      });
+      categoryDetailsContainer.appendChild(startTutorialBtn);
+    }
+
+    renderCard(walkthrough) {
+      const col = document.createElement('div');
+      col.classList.add('col-4');
+
+      const card = document.createElement('div');
+      card.classList.add('wt-card');
+      col.appendChild(card);
+
+      // Adding the click event to the card
+      // card.addEventListener('click', () => {
+      //   this.startWalkthrough(walkthrough);
+      // });
+
+      const imgContainer = document.createElement('div');
+      imgContainer.classList.add('img-container', 'blue-border');
+      imgContainer.addEventListener('click', () => {
+        this.startWalkthrough(walkthrough);
+      });
+      card.appendChild(imgContainer);
+
+      const thumbnail = document.createElement('img');
+      thumbnail.src = walkthrough.thumbnailPath;
+      thumbnail.alt = walkthrough.title;
+      imgContainer.appendChild(thumbnail);
+
+      const overlay = document.createElement('div');
+      overlay.classList.add('overlay');
+      overlay.textContent = 'Open tutorial';
+      imgContainer.appendChild(overlay);
+
+      const arrowImg = document.createElement('img');
+      arrowImg.src = 'assets/images/arrow-open.png';
+      arrowImg.alt = 'Open';
+      arrowImg.style.marginLeft = '10px'; // to give some space between the text and the image
+      overlay.appendChild(arrowImg);
+
+      const cardBody = document.createElement('div');
+      cardBody.classList.add('card-body');
+      card.appendChild(cardBody);
+
+      const tagsContainer = document.createElement('div');
+      walkthrough.tags.forEach(tag => {
+        const badge = document.createElement('span');
+        badge.classList.add('badge', 'bg-primary'); // default class for the badge
+
+        // Assign color class to badge depending on tag text
+        switch (tag) {
+          case this.TAGS.featured:
+            badge.classList.add('blue');
+            break;
+          case this.TAGS.new:
+            badge.classList.add('yellow');
+            break;
+          case this.TAGS.popular:
+            badge.classList.add('red');
+            break;
+          case this.TAGS.requested:
+            badge.classList.add('green');
+            break;
+          default:
+            // handle any other tags if necessary or keep as default
+            badge.classList.add('blue');
+            break;
+        }
+        badge.textContent = tag;
+        tagsContainer.appendChild(badge);
+      });
+      cardBody.appendChild(tagsContainer);
+
+      const title = document.createElement('h5');
+      title.classList.add('card-title');
+      title.textContent = walkthrough.title;
+      title.addEventListener('click', () => {
+        this.startWalkthrough(walkthrough);
+      });
+      cardBody.appendChild(title);
+
+      return col;
+    }
+
+
+    renderCardsContainer(currentWalkThroughs) {
+      const cardsContainer = document.querySelector('.cards');
+      cardsContainer.innerHTML = '';
+
+      let row;
+
+      currentWalkThroughs.forEach((walkthrough, index) => {
+        if (index % 3 === 0) {
+          row = document.createElement('div');
+          row.classList.add('row');
+          cardsContainer.appendChild(row);
+        }
+        const card = this.renderCard(walkthrough);
+        row.appendChild(card);
+      });
+    }
+
+    startWalkthrough(walkthrough) {
+      navModal.style.display = "none";
+
+
+      // @TODO/IDEA: i think we should lazy load all the images in the walkthrough.steps[].imgPath 
+      // go through all walkthrough.steps[].imgPath's and create image elements 
+      // that will keep their aspect ratio and each image should fill div.graphic-container  
+      // maybe an array of image elements so their order can correlate to currentStepIndex
+
+
+      console.log('Starting walkthrough for: ', { walkthrough });
+
+      // Static Details
+      const categoryElement = document.querySelector('.wt-category');
+      categoryElement.textContent = walkthrough.category;
+
+      const titleElement = document.querySelector('.wt-title');
+      titleElement.textContent = walkthrough.title;
+
+      // Handling Steps
+      let currentStepIndex = 0;  // We start with the first step
+
+      function displayStep(stepIndex) {
+        if (walkthrough.steps[stepIndex]) {
+          const descriptionElement = document.querySelector('.step-description');
+          descriptionElement.innerHTML = walkthrough.steps[stepIndex].description;
+
+          // Create image from walkthrough.steps[stepIndex].imgPath
+          const graphicContainer = document.querySelector('.graphic-container');
+
+          // Clear out any existing content in the graphicContainer
+          graphicContainer.innerHTML = '';
+
+          const image = document.createElement('img');
+          image.src = walkthrough.steps[stepIndex].imagePath;
+          image.alt = `Step ${stepIndex + 1} Image`; // Adding an alt text for accessibility
+          image.style.maxWidth = '100%';     // Ensures image doesn't exceed container's width
+          image.style.height = 'auto';       // Keeps image aspect ratio
+          image.style.objectFit = 'cover';   // Ensures the image covers the container
+          graphicContainer.appendChild(image);
+
+          // Update the step tracker text
+          const stepTracker = document.getElementById('current-step-tracker');
+          stepTracker.textContent = `${stepIndex + 1}/${walkthrough.steps.length}`;
+
+
+        } else {
+          console.error("Invalid step index");
+        }
+      }
+
+      displayStep(currentStepIndex);
+
+      // Click events for the back and forward buttons
+      const backStepButton = document.getElementById('back-step');
+      const forwardStepButton = document.getElementById('forward-step');
+
+      backStepButton.addEventListener('click', () => {
+        if (currentStepIndex > 0) {  // Ensure there's a previous step to show
+          currentStepIndex--;
+          displayStep(currentStepIndex);
+        }
+        updateButtonsState();
+      });
+
+      forwardStepButton.addEventListener('click', () => {
+        if (currentStepIndex < walkthrough.steps.length - 1) {  // Ensure there's a next step to show
+          currentStepIndex++;
+          displayStep(currentStepIndex);
+        }
+        updateButtonsState();
+      });
+
+      // Function to update button state (enabled/disabled)
+      function updateButtonsState() {
+        backStepButton.style.display = currentStepIndex === 0 ? 'none' : 'block';
+        forwardStepButton.style.display = currentStepIndex === walkthrough.steps.length - 1 ? 'none' : 'block';
+      }
+
+      // Initially set the buttons' state
+      updateButtonsState();
+
+    }
+
+
+    getCategories() {
+      this.categories = Array.from(new Set(this.walkthroughs.map(wt => wt.category)));
+    }
+
+    logWTS() {
+      console.log({ wts: this.walkthroughs });
+    }
+  }
+
+
+
+
+
+
+
+  const wts = new WTS(WALKTHROUGHS);
+  console.log(wts.categories)
 
   window.addEventListener('load', function () {
-    // Grab elements
+    // Grab Nav Modal Elements
     const openModalButton = document.getElementById("openModalButton");
     const closeModalButton = document.getElementById("closeModalButton");
     const navModal = document.getElementById("navModal");
 
     // Show the modal shortly after the page loads
     setTimeout(() => {
+
       navModal.style.display = "block";
     }, 500);
 
@@ -274,6 +872,8 @@
       navModal.style.display = "none";
     });
   });
+
+
 
 
 

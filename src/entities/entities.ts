@@ -19,7 +19,7 @@ export interface WalkthroughStep {
 export enum CategoryType {
   Welcome = 'Welcome',
   Overview = 'Overview',
-  HomePageSections = 'Home Page Sections',
+  HomePage = 'Home Page',
   Features = 'Features',
   FindInfo = 'Find Information',
   Announcements = 'Announcementsand Visa Business News',
@@ -30,7 +30,7 @@ export enum CategoryType {
 // export const CategoryType = {
 //     Welcome: 'Welcome',
 //     Overview: 'Overview',
-//     HomePageSections: 'Home Page Sections',
+//     HomePage: 'Home Page',
 //     Features: 'Features',
 //     FindInfo: 'Find Information',
 //     Announcements: 'Announcements and Visa Business News',
@@ -40,7 +40,7 @@ export enum CategoryType {
 
 export const WALKTHROUGHS: Walkthrough[] = [
     {
-        category: CategoryType.HomePageSections,
+        category: CategoryType.HomePage,
         title: 'Popular Links',
         thumbnailImgPath: 'assets/images/popular_links/thumbnail.jpg',
         tags: [],
