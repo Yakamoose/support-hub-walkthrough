@@ -577,7 +577,7 @@
                 <p class="title">Get the most out of Visa Online</p>
                 <p class="description">Start here for a complete a tour of Visa Online or use the menu to jump to a
                   specific tutorial.</p>
-                <button class="btn btn-primary">Begin tour</button>
+                <button id="begin-btn" class="btn btn-primary">Begin tour</button>
               </div>
               <div class="col-6 gs-card">
               </div>
@@ -717,6 +717,12 @@
       description.classList.add('description');
       description.textContent = walkthrough.categoryDescription;
       cardContainer.appendChild(description);
+
+      // IAdd click func to Begin Tour button
+      const startButton = document.getElementById('begin-btn');
+      startButton.addEventListener('click', () => {
+        this.startWalkthrough(walkthrough);
+      });
 
       // Insert anchor link
       const anchor = document.createElement('a');
