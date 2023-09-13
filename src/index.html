@@ -64,7 +64,7 @@
       font-family: 'visa-font', sans-serif, Tahoma;
     }
 
-    .shub-container {
+    .walkthrough-container {
       height: 100vh;
       width: 100%;
       min-width: 1500px;
@@ -388,7 +388,7 @@
       transition: opacity 0.3s ease-in-out;
     }
 
-    .img-container:hover .overlay{
+    .img-container:hover .overlay {
       /* display: flex; */
       opacity: 1;
       /* Show the overlay on hover */
@@ -447,17 +447,55 @@
     .cards .row {
       margin-bottom: 30px;
     }
+
+    .getting-started {
+      display: none;
+      height: 100%;
+    }
+
+    .getting-started .title {
+      color: var(--brand-primary-light-color);
+      font-size: 36px;
+      line-height: 1.2;
+      font-family: "visa-font-semi-bold", sans-serif;
+
+    }
+
+    .getting-started .gs-card {
+      border-radius: 20px;
+      background-color: var(--brand-tertiary-2-color);
+      padding: 30px;
+      height: 97%;
+    }
+
+    .getting-started .gs-card img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .getting-started .gs-card .title {
+      color: var(--brand-primary-light-color);
+      font-size: 24px;
+      line-height: 1.2;
+      font-family: "visa-font-semi-bold", sans-serif;
+      margin-top: 20px;
+    }
+
+    .getting-started .gs-card .descrription {
+      font-size: 18px;
+    }
+
   </style>
 </head>
 
 <body>
   <cb-root></cb-root>
 
-  <div class="shub-container">
+  <div class="walkthrough-container">
     <div class="blue-border graphic-container">
-      <p>Graphic to come</p>
+      <p>Open Menu and select a tutorial.</p>
     </div>
-
 
     <div class="details-container">
       <div class="details-header">
@@ -497,11 +535,7 @@
           </button>
         </div>
       </div>
-
     </div>
-
-
-
   </div>
 
 
@@ -537,6 +571,20 @@
           <div id="cards-container">
             <div class="category-details d-flex justify-content-between align-items-center"></div>
             <div class="cards"></div>
+          </div>
+
+
+          <div class="getting-started">
+            <div class="row h-100">
+              <div class="col-6">
+                <p class="title">Get the most out of Visa Online</p>
+                <p class="description">Start here for a complete a tour of Visa Online or use the menu to jump to a
+                  specific tutorial.</p>
+                <button class="btn btn-primary">Begin tour</button>
+              </div>
+              <div class="col-6 gs-card">
+              </div>
+            </div>
           </div>
 
         </div>
@@ -614,17 +662,90 @@
     showWalkThroughsFor(category) {
       console.log({ category });
 
+      //GPT if category === 'Getting Started'
+
       const currentWalkThroughs = this.walkthroughs.filter(wt => wt.category === category);
       console.log({ currentWalkThroughs });
 
-      const { categoryDescription } = currentWalkThroughs[0];
-      console.log({ categoryDescription });
+      if (category === 'Getting Started') {
+        this.renderGettingStarted(currentWalkThroughs[0]);
+      } else {
 
-      this.renderCategoryDetails(category, categoryDescription, currentWalkThroughs[0]);
-      this.renderCardsContainer(currentWalkThroughs);
+        const { categoryDescription } = currentWalkThroughs[0];
+        console.log({ categoryDescription });
+
+        this.renderCategoryDetails(category, categoryDescription, currentWalkThroughs[0]);
+        this.renderCardsContainer(currentWalkThroughs);
+      }
+
+
+    }
+
+    renderGettingStarted(walkthrough) {
+      console.log({ walkthrough });
+
+      // Clear contents
+      document.querySelector('.category-details').innerHTML = '';
+      document.querySelector('.cards').innerHTML = '';
+      document.querySelector('.getting-started').style.display = 'block';
+
+      const cardContainer = document.querySelector('.gs-card');
+      cardContainer.innerHTML = '';
+
+      // Insert thumbnail image into cardContainer
+      const thumbnail = document.createElement('img');
+      thumbnail.src = walkthrough.thumbnailPath;
+      thumbnail.alt = walkthrough.title;
+      thumbnail.classList.add('blue-border')
+      cardContainer.appendChild(thumbnail);
+
+      // Insert tags as badges
+      const tagsContainer = document.createElement('div');
+      walkthrough.tags.forEach(tag => {
+        const badge = document.createElement('span');
+        badge.classList.add('badge', 'bg-primary', this.getBadgeClass(tag));
+        badge.textContent = tag;
+        tagsContainer.appendChild(badge);
+      });
+      cardContainer.appendChild(tagsContainer);
+
+      // Insert title
+      const title = document.createElement('h5');
+      title.classList.add('title');
+      title.textContent = walkthrough.title;
+      cardContainer.appendChild(title);
+
+      // Insert description
+      const description = document.createElement('p');
+      description.classList.add('description');
+      description.textContent = walkthrough.categoryDescription;
+      cardContainer.appendChild(description);
+
+      // Insert anchor link
+      const anchor = document.createElement('a');
+      anchor.href = '#';
+      anchor.textContent = 'Start Walkthrough';
+      anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.startWalkthrough(walkthrough);
+      });
+      cardContainer.appendChild(anchor);
+    }
+
+    getBadgeClass(tag) {
+      switch (tag.toLowerCase()) {
+        case 'featured': return 'blue';
+        case 'new': return 'yellow';
+        case 'popular': return 'red';
+        case 'most requested': return 'green';
+        default: return 'blue';
+      }
     }
 
     renderCategoryDetails(category, categoryDescription, firstWalkthrough) {
+      const gsContainer = document.querySelector('.getting-started')
+      gsContainer.style.display = 'none';
+
       const categoryDetailsContainer = document.querySelector('.category-details');
       categoryDetailsContainer.innerHTML = '';
 
@@ -655,12 +776,7 @@
 
       const card = document.createElement('div');
       card.classList.add('wt-card');
-      col.appendChild(card);
-
-      // Adding the click event to the card
-      // card.addEventListener('click', () => {
-      //   this.startWalkthrough(walkthrough);
-      // });
+      col.appendChild(card)
 
       const imgContainer = document.createElement('div');
       imgContainer.classList.add('img-container', 'blue-border');

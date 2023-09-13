@@ -19,10 +19,11 @@ export const TAGS = {
 // ***architecture / order in array = order presented in DOM
 export const WALKTHROUGHS = [
     // Getting Started category
+    // ***ONLY 1 to fit G3tting Started Layout (different than others)
     {
         category: "Getting Started",
-        categoryDescription: "A guide to get you started on the platform.",
-        title: 'Getting Started',
+        categoryDescription: "Lorem ipsum dolor sit amet. Nullam neque justo ante lorem amet. Ultrices eu nisl odio.",
+        title: 'How to submit feedback',
         thumbnailPath: 'assets/images/popular_links/thumbnail.jpg',
         tags: [TAGS.featured, TAGS.new, TAGS.popular, TAGS.requested],
         steps: [
@@ -33,115 +34,6 @@ export const WALKTHROUGHS = [
             {
                 description: '<b>Getting Started</b> also provides tips and shortcuts for better productivity.',
                 imagePath: 'assets/images/popular_links/step_1.jpg'
-            }
-        ]
-    },
-    {
-        category: "Getting Started",
-        categoryDescription: "A guide to get you started on the platform.",
-        title: 'Lets go',
-        thumbnailPath: 'assets/images/popular_links/thumbnail.jpg',
-        tags: [],
-        steps: [
-            {
-                description: '<b>First Step:</b> Learn how to sign in and navigate the homepage for easy access to all features.',
-                imagePath: 'assets/images/popular_links/step_0.jpg',
-            },
-            {
-                description: '<b>Second Step:</b> Discover how to customize your dashboard to see the information that matters most to you.',
-                imagePath: 'assets/images/popular_links/step_1.jpg',
-            },
-            {
-                description: '<b>Third Step:</b> Understand how to utilize search functionality to quickly find the resources you need.',
-                imagePath: 'assets/images/popular_links/step_2.jpg',
-            },
-            {
-                description: '<b>Fourth Step:</b> Get an overview of setting up notifications so you never miss an update.',
-                imagePath: 'assets/images/popular_links/step_3.jpg',
-            }
-        ]
-    },
-    {
-        category: "Getting Started",
-        categoryDescription: "A guide to get you started on the platform.",
-        title: 'Getting Started',
-        thumbnailPath: 'assets/images/popular_links/thumbnail.jpg',
-        tags: [TAGS.featured, TAGS.new, TAGS.popular, TAGS.requested],
-        steps: [
-            {
-                description: '<b>Getting Started</b> introduces you to the dashboard. Explore the key elements to navigate through easily.',
-                imagePath: 'assets/images/popular_links/step_0.jpg',
-            },
-            {
-                description: '<b>Getting Started</b> also provides tips and shortcuts for better productivity.',
-                imagePath: 'assets/images/popular_links/step_1.jpg'
-            }
-        ]
-    },
-    {
-        category: "Getting Started",
-        categoryDescription: "A guide to get you started on the platform.",
-        title: 'Lets go',
-        thumbnailPath: 'assets/images/popular_links/thumbnail.jpg',
-        tags: [],
-        steps: [
-            {
-                description: '<b>First Step:</b> Learn how to sign in and navigate the homepage for easy access to all features.',
-                imagePath: 'assets/images/popular_links/step_0.jpg',
-            },
-            {
-                description: '<b>Second Step:</b> Discover how to customize your dashboard to see the information that matters most to you.',
-                imagePath: 'assets/images/popular_links/step_1.jpg',
-            },
-            {
-                description: '<b>Third Step:</b> Understand how to utilize search functionality to quickly find the resources you need.',
-                imagePath: 'assets/images/popular_links/step_2.jpg',
-            },
-            {
-                description: '<b>Fourth Step:</b> Get an overview of setting up notifications so you never miss an update.',
-                imagePath: 'assets/images/popular_links/step_3.jpg',
-            }
-        ]
-    },
-    {
-        category: "Getting Started",
-        categoryDescription: "A guide to get you started on the platform.",
-        title: 'Getting Started',
-        thumbnailPath: 'assets/images/popular_links/thumbnail.jpg',
-        tags: [TAGS.featured, TAGS.new, TAGS.popular, TAGS.requested],
-        steps: [
-            {
-                description: '<b>Getting Started</b> introduces you to the dashboard. Explore the key elements to navigate through easily.',
-                imagePath: 'assets/images/popular_links/step_0.jpg',
-            },
-            {
-                description: '<b>Getting Started</b> also provides tips and shortcuts for better productivity.',
-                imagePath: 'assets/images/popular_links/step_1.jpg'
-            }
-        ]
-    },
-    {
-        category: "Getting Started",
-        categoryDescription: "A guide to get you started on the platform.",
-        title: 'Lets go',
-        thumbnailPath: 'assets/images/popular_links/thumbnail.jpg',
-        tags: [],
-        steps: [
-            {
-                description: '<b>First Step:</b> Learn how to sign in and navigate the homepage for easy access to all features.',
-                imagePath: 'assets/images/popular_links/step_0.jpg',
-            },
-            {
-                description: '<b>Second Step:</b> Discover how to customize your dashboard to see the information that matters most to you.',
-                imagePath: 'assets/images/popular_links/step_1.jpg',
-            },
-            {
-                description: '<b>Third Step:</b> Understand how to utilize search functionality to quickly find the resources you need.',
-                imagePath: 'assets/images/popular_links/step_2.jpg',
-            },
-            {
-                description: '<b>Fourth Step:</b> Get an overview of setting up notifications so you never miss an update.',
-                imagePath: 'assets/images/popular_links/step_3.jpg',
             }
         ]
     },
