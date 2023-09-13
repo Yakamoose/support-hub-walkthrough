@@ -42,13 +42,52 @@ export const WALKTHROUGHS = [
     {
         category: "Overview",
         categoryDescription: "A comprehensive overview of the dashboard.",
-        title: 'Dashboard Overview',
+        title: 'Dashboard Overview mock data 1',
         thumbnailPath: 'assets/images/popular_links/thumbnail.jpg',
-        tags: [TAGS.new],
+        tags: [TAGS.new, TAGS.requested],
         steps: [
             {
-                description: '<b>Dashboard Overview</b> explains the main components you will interact with daily.',
+                description: '<b>Dashboard Overview</b> #1 explains the main components you will interact with daily.',
                 imagePath: 'assets/images/popular_links/step_0.jpg',
+            }
+        ]
+    },
+    {
+        category: "Overview",
+        categoryDescription: "A comprehensive overview of the dashboard.",
+        title: 'Dashboard Overview mock data 2',
+        thumbnailPath: 'assets/images/popular_links/thumbnail.jpg',
+        tags: [TAGS.featured, TAGS.popular],
+        steps: [
+            {
+                description: '<b>Dashboard Overview</b> #2 provides insights into the analytics section.',
+                imagePath: 'assets/images/popular_links/step_1.jpg',
+            }
+        ]
+    },
+    {
+        category: "Overview",
+        categoryDescription: "A comprehensive overview of the dashboard.",
+        title: 'Dashboard Overview mock data 3',
+        thumbnailPath: 'assets/images/popular_links/thumbnail.jpg',
+        tags: [TAGS.popular, TAGS.new],
+        steps: [
+            {
+                description: '<b>Dashboard Overview</b> #3 breaks down the task management interface.',
+                imagePath: 'assets/images/popular_links/step_2.jpg',
+            }
+        ]
+    },
+    {
+        category: "Overview",
+        categoryDescription: "A comprehensive overview of the dashboard.",
+        title: 'Dashboard Overview mock data 4',
+        thumbnailPath: 'assets/images/popular_links/thumbnail.jpg',
+        tags: [TAGS.featured, TAGS.requested],
+        steps: [
+            {
+                description: '<b>Dashboard Overview</b> #4 discusses the user settings and customization.',
+                imagePath: 'assets/images/popular_links/step_3.jpg',
             }
         ]
     },
