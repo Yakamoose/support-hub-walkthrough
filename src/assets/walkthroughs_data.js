@@ -55,7 +55,7 @@ export const WALKTHROUGHS = [
     {
         category: "Overview",
         categoryDescription: "A comprehensive overview of the dashboard.",
-        title: 'Dashboard Overview mock data 2',
+        title: 'Home Page Overview mock data 2',
         thumbnailPath: 'assets/images/popular_links/thumbnail.jpg',
         tags: [TAGS.featured, TAGS.popular],
         steps: [
@@ -68,7 +68,7 @@ export const WALKTHROUGHS = [
     {
         category: "Overview",
         categoryDescription: "A comprehensive overview of the dashboard.",
-        title: 'Dashboard Overview mock data 3',
+        title: 'Features Overview mock data 3',
         thumbnailPath: 'assets/images/popular_links/thumbnail.jpg',
         tags: [TAGS.popular, TAGS.new],
         steps: [
@@ -81,7 +81,7 @@ export const WALKTHROUGHS = [
     {
         category: "Overview",
         categoryDescription: "A comprehensive overview of the dashboard.",
-        title: 'Dashboard Overview mock data 4',
+        title: 'Announcements Overview mock data 4',
         thumbnailPath: 'assets/images/popular_links/thumbnail.jpg',
         tags: [TAGS.featured, TAGS.requested],
         steps: [

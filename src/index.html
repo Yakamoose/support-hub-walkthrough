@@ -208,7 +208,7 @@
       overflow: hidden;
     }
 
-    
+
 
 
 
@@ -481,12 +481,13 @@
     .getting-started .gs-card .descrription {
       font-size: 18px;
     }
-
   </style>
 </head>
 
 <body>
   <cb-root></cb-root>
+
+
 
   <div class="walkthrough-container">
     <div class="blue-border graphic-container">
@@ -861,6 +862,8 @@
 
     startWalkthrough(walkthrough) {
       navModal.style.display = "none";
+      const closeModalButton = document.getElementById("closeModalButton");
+      closeModalButton.style.display = 'block';
 
 
       // @TODO/IDEA: i think we should lazy load all the images in the walkthrough.steps[].imgPath 
@@ -970,7 +973,7 @@
 
     // Show the modal shortly after the page loads
     setTimeout(() => {
-
+      closeModalButton.style.display = 'none';
       navModal.style.display = "block";
     }, 500);
 
