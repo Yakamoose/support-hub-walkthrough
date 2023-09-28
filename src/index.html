@@ -64,6 +64,13 @@
       font-family: 'visa-font', sans-serif, Tahoma;
     }
 
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: centerc;
+    }
+
     .walkthrough-container {
       height: 100vh;
       width: 100%;
@@ -74,13 +81,21 @@
       display: flex;
     }
 
-    .graphic-container {
+    /* .graphic-container {
       width: 66%;
       height: 100%;
       margin-right: 20px;
-    }
-
+      background-color: var(--brand-primary-dark-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    } */
     .graphic-container {
+      min-width: calc(100vh * (935/675) - 116px);
+      height: 100%;
+      margin-right: 20px;
+      background-color: var(--brand-primary-dark-color);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -88,13 +103,13 @@
     }
 
     .graphic-container img {
-      width: 100%;
+      width: auto;
       height: 100%;
-      object-fit: cover;
+      /* object-fit: contain; */
     }
 
     .details-container {
-      width: 33%;
+      flex-grow: 1;
       height: 100%;
     }
 
@@ -107,11 +122,16 @@
     .details-header div:first-of-type {
       margin-right: auto;
       font-size: 14px;
+      padding-right: 2rem;
     }
 
     .details-header .visa-logo img {
       height: 24px;
       width: auto;
+    }
+
+    .details-header .visa-logo p {
+      margin: 5px 0 0 6px;
     }
 
     .details-header .return-vol {
@@ -125,6 +145,7 @@
       color: var(--brand-primary-color);
       margin: 0;
       font-family: 'visa-font-semi-bold', sans-serif;
+      text-wrap: nowrap;
     }
 
     .details-header .return-vol img {
@@ -144,8 +165,12 @@
       justify-content: space-between;
     }
 
+    .details-body .details-cont {
+      overflow: auto;
+    }
+
     .details-body hr {
-      border-color: var(--brand-primary-light-color);
+      border-color: var(--brand-primary-color);
       border-width: 3px;
       opacity: 1;
     }
@@ -163,7 +188,7 @@
     .wt-details .wt-title {
       font-family: 'visa-font-semi-bold', sans-serif;
       font-size: 32px;
-      color: var(--brand-primary-light-color);
+      color: var(--brand-primary-color);
       margin-bottom: 0;
       line-height: 1.2;
       margin-top: 10px;
@@ -171,15 +196,44 @@
 
     .step-description {
       padding: 10px 35px 10px;
-      font-size: 18px;
+      font-size: 20px;
       font-family: 'visa-font', sans-serif;
-      line-height: 1.75;
+      line-height: 1.4;
     }
 
     .step-description b {
       font-family: 'visa-font-semi-bold', sans-serif;
-      color: var(--brand-primary-light-color);
-      text-decoration: underline;
+    }
+
+    .step-description .note {
+      background-color: rgba(199, 237, 255, .4);
+      border-radius: 20px;
+      font-size: 1rem;
+      line-height: 1.7;
+      padding: 15px 21px;
+      margin-top: 2rem;
+    }
+
+    .step-description br {
+      content: "";
+      display: block;
+      margin-top: 1rem;
+    }
+
+    .step-description .start-btn, .step-description .next-btn {
+      margin-top: 2rem;
+      /* font-family: 'visa-font-semi-bold', sans-serif;
+      font-size: 1rem;
+      letter-spacing: .5px;
+      display: flex;
+      align-items: center; */
+      width: fit-content;
+    }
+
+    .step-description .start-btn img {
+      /* height: 20px;
+      width: auto;
+      margin-left: 10px; */
     }
 
     .details-footer {
@@ -204,7 +258,7 @@
 
     .blue-border {
       border-radius: 20px;
-      border: 3px solid var(--brand-primary-light-color);
+      border: 3px solid var(--brand-primary-color);
       overflow: hidden;
     }
 
@@ -252,36 +306,37 @@
 
     .nav-modal-cont .nav-modal .nav-menu .nav-header {
       padding: 10%;
-
     }
 
     .nav-header img {
-      width: 35%;
-      height: auto;
-      margin-bottom: 10px;
+      width: auto;
+      height: 35px;
+      margin-bottom: 8px;
     }
 
     .nav-menu .nav-header p {
-      color: var(--brand-primary-color);
       font-size: 16px;
-      margin: 0;
+      margin: 0 0 0 .6rem;
     }
 
     .nav-menu .nav-links {
       padding: 0;
-      margin: 0;
+      margin: 0 15px;
       overflow: hidden auto;
 
     }
 
     .nav-menu .nav-links li {
+      border-radius: 10px !important;
       list-style: none;
       padding: 20px 10%;
-      transition: transform 0.3s ease, background-color 0.3s ease;
+      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
     }
 
     .nav-menu .nav-links li.active {
-      background-color: var(--brand-primary-color);
+      background-color: var(--brand-primary-color) !important;
     }
 
     .nav-menu .nav-links li:hover {
@@ -294,11 +349,11 @@
     }
 
     .nav-menu .nav-links li.active a {
-      color: #fff;
+      color: #fff !important;
     }
 
     .nav-menu .nav-links li:hover {
-      transform: scale(1.05);
+      /* transform: scale(1.05); */
     }
 
     .nav-menu .nav-links li a {
@@ -306,14 +361,14 @@
       font-family: 'visa-font-semi-bold', sans-serif;
       text-decoration: none;
       color: var(--brand-primary-color);
+      letter-spacing: .5px;
     }
 
-    /* .nav-menu .nav-links li a:hover {
-      text-decoration: underline;
-      cursor: pointer;
-    } */
-
-
+    .nav-menu .nav-links li img {
+      height: 24px;
+      width: auto;
+      margin-right: 1rem;
+    }
 
     .nav-modal-body-cont {
       padding: 60px;
@@ -375,7 +430,7 @@
       right: 0;
       bottom: 0;
       left: 0;
-      background-color: rgba(0, 0, 255, 0.7);
+      background-color: rgba(20, 52, 203, 0.9);
       color: #fff;
       display: flex;
       align-items: center;
@@ -449,12 +504,33 @@
       height: 100%;
     }
 
+    .getting-started .col-6:first-of-type {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .getting-started .col-6:first-of-type p {
+      padding-right: 2.5rem;
+    }
+
     .getting-started .title {
-      color: var(--brand-primary-light-color);
+      color: var(--brand-primary-color);
       font-size: 36px;
       line-height: 1.2;
       font-family: "visa-font-semi-bold", sans-serif;
+    }
 
+    .getting-started #begin-btn {
+      /* display: flex;
+      align-items: center; */
+    }
+
+    .getting-started #begin-btn img {
+      /* height: 15px;
+      width: auto; */
+      /* margin-left: 11px; */
     }
 
     .getting-started .gs-card {
@@ -462,6 +538,9 @@
       background-color: var(--brand-tertiary-2-color);
       padding: 30px;
       height: 97%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .getting-started .gs-card img {
@@ -471,15 +550,37 @@
     }
 
     .getting-started .gs-card .title {
-      color: var(--brand-primary-light-color);
+      color: var(--brand-primary-color);
       font-size: 24px;
       line-height: 1.2;
       font-family: "visa-font-semi-bold", sans-serif;
       margin-top: 20px;
     }
 
-    .getting-started .gs-card .descrription {
+    .getting-started .gs-card .description {
       font-size: 18px;
+    }
+
+    .getting-started .disclaimer {
+      font-size: 10px;
+      margin-top: auto;
+    }
+
+    .btn-primary {
+      background-color: var(--brand-primary-color) !important;
+      border-color: var(--brand-primary-color) !important;
+      font-family: "visa-font-semi-bold", sans-serif;
+      display: flex;
+      align-items: center;
+      letter-spacing: .5px;
+      font-size: 1rem;
+      padding: 6px 15px
+    }
+
+    .btn-primary img {
+      margin-left: 11px;
+      height: 15px;
+      width: auto;
     }
   </style>
 </head>
@@ -498,7 +599,7 @@
       <div class="details-header">
         <div class="visa-logo">
           <img src="assets/images/vol-logo.png">
-          <p class="mt-1 mb-0">Interactive Tutorial</p>
+          <p class="mt-1 mb-0 ml-3">Interactive Tutorial</p>
         </div>
         <div class="return-vol p-2">
           <p>Return to<br>Visa Online</p>
@@ -510,7 +611,7 @@
       </div>
 
       <div class="details-body blue-border">
-        <div>
+        <div class="details-cont">
           <div class="wt-details">
             <p class="wt-category"></p>
             <p class="wt-title"></p>
@@ -552,7 +653,7 @@
         <!-- Left Nav -->
         <nav class="col-3 h-100 nav-menu">
           <div class="nav-header">
-            <img src="assets/images/visa-logo-sm.png" alt="Visa Logo Image" />
+            <img src="assets/images/vol-logo.png" alt="Visa Logo Image" />
             <p>Interactive Tour</p>
           </div>
 
@@ -574,10 +675,15 @@
           <div class="getting-started">
             <div class="row h-100">
               <div class="col-6">
-                <p class="title">Get the most out of Visa Online</p>
-                <p class="description">Start here for a complete a tour of Visa Online or use the menu to jump to a
-                  specific tutorial.</p>
-                <button id="begin-btn" class="btn btn-primary">Begin tour</button>
+                <div class="info">
+                  <p class="title">Get the most out of Visa Online</p>
+                  <p class="description">Start here for a complete a tour of Visa Online or use the menu to jump to a
+                    specific tutorial.</p>
+                  <button id="begin-btn" class="btn btn-primary">Begin tour <img
+                      src='assets/images/carat-right.png'></button>
+                </div>
+                <p class="disclaimer">Tutorial is for illustrative purposes only. Live view of Visa Online and the tools
+                  within may not reflect this tutorial exactly</p>
               </div>
               <div class="col-6 gs-card">
               </div>
@@ -596,7 +702,7 @@
 
 </body>
 <script type="module">
-  import { WALKTHROUGHS } from './assets/walkthroughs_data.js';
+  import { VSH_WALKTHROUGHS } from './assets/walkthroughs_data.js';
 
   class WTS {
     categories = [];
@@ -618,18 +724,72 @@
     createNavModalUI() {
       const ulElement = document.querySelector('.nav-links');
 
+      const CATEGORIES = {
+        GettingStarted: 'Getting Started',
+        NewFeatures: 'New Features',
+        Overview: 'Overview',
+        HomePage: 'Home Page',
+        Features: 'Features',
+        FindInfo: 'Find Information',
+        Announcements: 'Announcements and Visa Business News',
+        Support: 'Support',
+        TrainingAndEducation: 'Training & Education',
+      };
+
       // Remove any existing <li> elements first, to prevent duplicates
       ulElement.innerHTML = '';
 
       let firstLiElement = null;
 
+      function setIconSrcForCategory(category, isActive = false) {
+        let baseSrc = 'assets/images/visa_icons/';
+        switch (category) {
+          case CATEGORIES.GettingStarted:
+            baseSrc += 'getting-started-icon';
+            break;
+          case CATEGORIES.NewFeatures:
+            baseSrc += 'new-features-icon';
+            break;
+          case CATEGORIES.Overview:
+            baseSrc += 'overview-icon';
+            break;
+          case CATEGORIES.HomePage:
+            baseSrc += 'home-page-icon';
+            break;
+          case CATEGORIES.Features:
+            baseSrc += 'features-icon';
+            break;
+          case CATEGORIES.FindInfo:
+            baseSrc += 'find-info-icon';
+            break;
+          case CATEGORIES.Announcements:
+            baseSrc += 'announcements-icon';
+            break;
+          case CATEGORIES.Support:
+            baseSrc += 'support-icon';
+            break;
+          case CATEGORIES.TrainingAndEducation:
+            baseSrc += 'training-icon';
+            break;
+          default:
+            // @TODO get acctruall default icon from Design
+            baseSrc += 'new-features-icon';
+            break;
+        }
+        return baseSrc + (isActive ? '-active.png' : '.png');
+      }
+
       this.categories.forEach((category, index) => {
         const liElement = document.createElement('li');
         const aElement = document.createElement('a');
+        const iconElement = document.createElement('img');
+
+        iconElement.src = setIconSrcForCategory(category);
 
         aElement.setAttribute('role', 'button');
         aElement.textContent = category;
 
+        liElement.appendChild(iconElement);
         liElement.appendChild(aElement);
         ulElement.appendChild(liElement);
 
@@ -645,6 +805,13 @@
           // Add 'active' class to clicked li element
           liElement.classList.add('active');
 
+          // Update the icon for each list item based on its active status
+          ulElement.querySelectorAll('li').forEach(li => {
+            const iconImg = li.querySelector('img');
+            const currentCategory = li.querySelector('a').textContent;
+            iconImg.src = setIconSrcForCategory(currentCategory, li.classList.contains('active'));
+          });
+
           this.showWalkThroughsFor(category);
         });
       });
@@ -654,7 +821,6 @@
         firstLiElement.click();
       }
     }
-
 
     showWalkThroughsFor(category) {
       console.log({ category });
@@ -667,15 +833,11 @@
       if (category === 'Getting Started') {
         this.renderGettingStarted(currentWalkThroughs[0]);
       } else {
-
         const { categoryDescription } = currentWalkThroughs[0];
-        console.log({ categoryDescription });
 
         this.renderCategoryDetails(category, categoryDescription, currentWalkThroughs[0]);
         this.renderCardsContainer(currentWalkThroughs);
       }
-
-
     }
 
     renderGettingStarted(walkthrough) {
@@ -686,8 +848,10 @@
       document.querySelector('.cards').innerHTML = '';
       document.querySelector('.getting-started').style.display = 'block';
 
-      const cardContainer = document.querySelector('.gs-card');
-      cardContainer.innerHTML = '';
+      const gettingStartedContainer = document.querySelector('.gs-card');
+      gettingStartedContainer.innerHTML = '';
+
+      const cardContainer = document.createElement('div');
 
       // Insert thumbnail image into cardContainer
       const thumbnail = document.createElement('img');
@@ -718,21 +882,23 @@
       description.textContent = walkthrough.categoryDescription;
       cardContainer.appendChild(description);
 
-      // IAdd click func to Begin Tour button
+      // Add click func to Begin Tour button
       const startButton = document.getElementById('begin-btn');
       startButton.addEventListener('click', () => {
         this.startWalkthrough(walkthrough);
       });
 
+      gettingStartedContainer.appendChild(cardContainer);
+
       // Insert anchor link
       const anchor = document.createElement('a');
       anchor.href = '#';
-      anchor.textContent = 'Start Walkthrough';
+      anchor.textContent = 'Start tutorial >';
       anchor.addEventListener('click', (e) => {
         e.preventDefault();
         this.startWalkthrough(walkthrough);
       });
-      cardContainer.appendChild(anchor);
+      gettingStartedContainer.appendChild(anchor);
     }
 
     getBadgeClass(tag) {
@@ -765,7 +931,7 @@
       textContainer.appendChild(categoryDescParagraph);
 
       const startTutorialBtn = document.createElement('button');
-      startTutorialBtn.textContent = 'Start tutorials';
+      startTutorialBtn.innerHTML = `Start tutorials  <img src='assets/images/carat-right.png'>`;
       startTutorialBtn.classList.add('btn', 'btn-primary');
       startTutorialBtn.addEventListener('click', () => {
         this.startWalkthrough(firstWalkthrough);
@@ -848,7 +1014,6 @@
       return col;
     }
 
-
     renderCardsContainer(currentWalkThroughs) {
       const cardsContainer = document.querySelector('.cards');
       cardsContainer.innerHTML = '';
@@ -892,26 +1057,54 @@
 
       function displayStep(stepIndex) {
         if (walkthrough.steps[stepIndex]) {
+          const step = walkthrough.steps[stepIndex];
           const descriptionElement = document.querySelector('.step-description');
-          descriptionElement.innerHTML = walkthrough.steps[stepIndex].description;
+          descriptionElement.innerHTML = step.description;
 
-          // Create image from walkthrough.steps[stepIndex].imgPath
+          if (step.note) {
+            const noteElement = document.createElement('p');
+            noteElement.classList.add('note');
+            noteElement.innerHTML = `<b>NOTE:</b> ${step.note}`;
+            descriptionElement.appendChild(noteElement)
+          }
+
+          // If first step, add "start tutorial" button
+          if (stepIndex === 0) {
+            const startBtnElement = document.createElement('btn');
+            startBtnElement.classList.add('btn', 'btn-primary', 'start-btn');
+            startBtnElement.addEventListener('click', () => {
+              currentStepIndex++;
+              displayStep(currentStepIndex);
+              updateButtonsState();
+            });
+            startBtnElement.innerHTML = `Start Tutorial <img src='assets/images/carat-right.png'>`;
+            descriptionElement.appendChild(startBtnElement);
+          } else if (stepIndex === walkthrough.steps.length - 1) {
+            console.log('last step');
+
+            const nextBtnElement = document.createElement('btn');
+            nextBtnElement.classList.add('btn', 'btn-primary', 'next-btn');
+
+            // 
+
+
+            descriptionElement.appendChild(nextBtnElement);
+          }
+
+          // Create image from step.imgPath
           const graphicContainer = document.querySelector('.graphic-container');
 
           // Clear out any existing content in the graphicContainer
           graphicContainer.innerHTML = '';
 
           const image = document.createElement('img');
-          image.src = walkthrough.steps[stepIndex].imagePath;
-          image.alt = `Step ${stepIndex + 1} Image`; // Adding an alt text for accessibility
-          image.style.maxWidth = '100%';     // Ensures image doesn't exceed container's width
-          image.style.height = 'auto';       // Keeps image aspect ratio
-          image.style.objectFit = 'cover';   // Ensures the image covers the container
+          image.src = step.imagePath;
+          image.alt = `Step ${stepIndex + 1} Image`;
           graphicContainer.appendChild(image);
 
           // Update the step tracker text
           const stepTracker = document.getElementById('current-step-tracker');
-          stepTracker.textContent = `${stepIndex + 1}/${walkthrough.steps.length}`;
+          stepTracker.textContent = `${stepIndex + 1} / ${walkthrough.steps.length}`;
 
 
         } else {
@@ -950,8 +1143,19 @@
       // Initially set the buttons' state
       updateButtonsState();
 
-    }
 
+      //GPT check this and fix any errors.  i want to insert a button that goes to the next step when clicked 
+      if (currentStepIndex === 0) {
+        const startBtnElement = document.createElement('btn');
+        startBtnElement.classList.add('btn', 'btn-primary', 'start-btn');
+        // Wrap the displayStep function in an anonymous function
+        startBtnElement.addEventListener('click', () => {
+          displayStep(1);
+        });
+        startBtnElement.innerHTML = `Start Tutorial <img src='assets/images/carat-right.png'>`;
+        descriptionElement.appendChild(startBtnElement);
+      }
+    }
 
     getCategories() {
       this.categories = Array.from(new Set(this.walkthroughs.map(wt => wt.category)));
@@ -968,7 +1172,7 @@
 
 
 
-  const wts = new WTS(WALKTHROUGHS);
+  const wts = new WTS(VSH_WALKTHROUGHS);
   console.log(wts.categories)
 
   window.addEventListener('load', function () {
@@ -993,10 +1197,6 @@
       navModal.style.display = "none";
     });
   });
-
-
-
-
 
 </script>
 
