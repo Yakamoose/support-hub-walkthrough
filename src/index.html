@@ -220,20 +220,10 @@
       margin-top: 1rem;
     }
 
-    .step-description .start-btn, .step-description .next-btn {
+    .step-description .start-btn,
+    .step-description .next-btn {
       margin-top: 2rem;
-      /* font-family: 'visa-font-semi-bold', sans-serif;
-      font-size: 1rem;
-      letter-spacing: .5px;
-      display: flex;
-      align-items: center; */
       width: fit-content;
-    }
-
-    .step-description .start-btn img {
-      /* height: 20px;
-      width: auto;
-      margin-left: 10px; */
     }
 
     .details-footer {
@@ -825,8 +815,6 @@
     showWalkThroughsFor(category) {
       console.log({ category });
 
-      //GPT if category === 'Getting Started'
-
       const currentWalkThroughs = this.walkthroughs.filter(wt => wt.category === category);
       console.log({ currentWalkThroughs });
 
@@ -1032,129 +1020,119 @@
     }
 
     startWalkthrough(walkthrough) {
-      navModal.style.display = "none";
-      const closeModalButton = document.getElementById("closeModalButton");
-      closeModalButton.style.display = 'block';
+      const walkthroughs = this.walkthroughs;
+      let currentStepIndex = 0;
 
-
-      // @TODO/IDEA: i think we should lazy load all the images in the walkthrough.steps[].imgPath 
-      // go through all walkthrough.steps[].imgPath's and create image elements 
-      // that will keep their aspect ratio and each image should fill div.graphic-container  
-      // maybe an array of image elements so their order can correlate to currentStepIndex
-
-
-      console.log('Starting walkthrough for: ', { walkthrough });
-
-      // Static Details
+      // DOM Elements caching
+      const navModal = document.querySelector('#navModal');
+      const closeModalButton = document.querySelector('#closeModalButton');
       const categoryElement = document.querySelector('.wt-category');
-      categoryElement.textContent = walkthrough.category;
-
       const titleElement = document.querySelector('.wt-title');
-      titleElement.textContent = walkthrough.title;
+      const descriptionElement = document.querySelector('.step-description');
+      const backStepButton = document.querySelector('#back-step');
+      const forwardStepButton = document.querySelector('#forward-step');
+      const graphicContainer = document.querySelector('.graphic-container');
+      const stepTracker = document.querySelector('#current-step-tracker');
 
-      // Handling Steps
-      let currentStepIndex = 0;  // We start with the first step
+      // Helper Functions
+      const displayNote = (noteContent) => {
+        const noteElement = document.createElement('p');
+        noteElement.classList.add('note');
+        noteElement.innerHTML = `<b>NOTE:</b> ${noteContent}`;
+        descriptionElement.appendChild(noteElement);
+      };
 
-      function displayStep(stepIndex) {
-        if (walkthrough.steps[stepIndex]) {
-          const step = walkthrough.steps[stepIndex];
-          const descriptionElement = document.querySelector('.step-description');
-          descriptionElement.innerHTML = step.description;
-
-          if (step.note) {
-            const noteElement = document.createElement('p');
-            noteElement.classList.add('note');
-            noteElement.innerHTML = `<b>NOTE:</b> ${step.note}`;
-            descriptionElement.appendChild(noteElement)
-          }
-
-          // If first step, add "start tutorial" button
-          if (stepIndex === 0) {
-            const startBtnElement = document.createElement('btn');
-            startBtnElement.classList.add('btn', 'btn-primary', 'start-btn');
-            startBtnElement.addEventListener('click', () => {
-              currentStepIndex++;
-              displayStep(currentStepIndex);
-              updateButtonsState();
-            });
-            startBtnElement.innerHTML = `Start Tutorial <img src='assets/images/carat-right.png'>`;
-            descriptionElement.appendChild(startBtnElement);
-          } else if (stepIndex === walkthrough.steps.length - 1) {
-            console.log('last step');
-
-            const nextBtnElement = document.createElement('btn');
-            nextBtnElement.classList.add('btn', 'btn-primary', 'next-btn');
-
-            // 
-
-
-            descriptionElement.appendChild(nextBtnElement);
-          }
-
-          // Create image from step.imgPath
-          const graphicContainer = document.querySelector('.graphic-container');
-
-          // Clear out any existing content in the graphicContainer
-          graphicContainer.innerHTML = '';
-
-          const image = document.createElement('img');
-          image.src = step.imagePath;
-          image.alt = `Step ${stepIndex + 1} Image`;
-          graphicContainer.appendChild(image);
-
-          // Update the step tracker text
-          const stepTracker = document.getElementById('current-step-tracker');
-          stepTracker.textContent = `${stepIndex + 1} / ${walkthrough.steps.length}`;
-
-
-        } else {
+      const displayStep = (stepIndex) => {
+        if (!walkthrough.steps[stepIndex]) {
           console.error("Invalid step index");
+          return;
         }
-      }
+
+        const step = walkthrough.steps[stepIndex];
+        descriptionElement.innerHTML = step.description;
+
+        step.note && displayNote(step.note);
+
+        if (stepIndex === 0) {
+          appendStartButton();
+        } else if (stepIndex === walkthrough.steps.length - 1) {
+          appendNextOrMenuButton();
+        }
+
+        updateImage(step.imagePath, stepIndex);
+        stepTracker.textContent = `${stepIndex + 1} / ${walkthrough.steps.length}`;
+      };
+
+      const updateButtonsState = () => {
+        backStepButton.style.display = currentStepIndex === 0 ? 'none' : 'block';
+        forwardStepButton.style.display = currentStepIndex === walkthrough.steps.length - 1 ? 'none' : 'block';
+      };
+
+      const updateImage = (imagePath, stepIndex) => {
+        graphicContainer.innerHTML = '';  // Clear previous image
+
+        const image = document.createElement('img');
+        image.src = imagePath;
+        image.alt = `Step ${stepIndex + 1} Image`;
+        graphicContainer.appendChild(image);
+      };
+
+      const appendStartButton = () => {
+        const startBtnElement = document.createElement('btn');
+        startBtnElement.classList.add('btn', 'btn-primary', 'start-btn');
+        startBtnElement.innerHTML = `Start Tutorial <img src='assets/images/carat-right.png'>`;
+        startBtnElement.addEventListener('click', () => {
+          currentStepIndex++;
+          displayStep(currentStepIndex);
+          updateButtonsState();
+        });
+        descriptionElement.appendChild(startBtnElement);
+      };
+
+      const appendNextOrMenuButton = () => {
+        const currentWalkThroughs = walkthroughs.filter(wt => wt.category === walkthrough.category);
+        const nextBtnElement = document.createElement('btn');
+        nextBtnElement.classList.add('btn', 'btn-primary', 'next-btn');
+
+        if (walkthrough.title === currentWalkThroughs[currentWalkThroughs.length - 1].title) {
+          nextBtnElement.innerHTML = `Back to Menu <img src='assets/images/carat-right.png'>`;
+          nextBtnElement.addEventListener('click', () => navModal.style.display = 'block');
+        } else {
+          nextBtnElement.innerHTML = `Next Tutorial <img src='assets/images/carat-right.png'>`;
+          nextBtnElement.addEventListener('click', () => {
+            const currentWTIndex = currentWalkThroughs.findIndex(wt => wt.title === walkthrough.title);
+            this.startWalkthrough(currentWalkThroughs[currentWTIndex + 1]);
+          });
+        }
+
+        descriptionElement.appendChild(nextBtnElement);
+      };
+
+      // Initialize the walkthrough
+      navModal.style.display = "none";
+      closeModalButton.style.display = 'block';
+      categoryElement.textContent = walkthrough.category;
+      titleElement.textContent = walkthrough.title;
 
       displayStep(currentStepIndex);
 
-      // Click events for the back and forward buttons
-      const backStepButton = document.getElementById('back-step');
-      const forwardStepButton = document.getElementById('forward-step');
-
       backStepButton.addEventListener('click', () => {
-        if (currentStepIndex > 0) {  // Ensure there's a previous step to show
+        if (currentStepIndex > 0) {
           currentStepIndex--;
           displayStep(currentStepIndex);
+          updateButtonsState();
         }
-        updateButtonsState();
       });
 
       forwardStepButton.addEventListener('click', () => {
-        if (currentStepIndex < walkthrough.steps.length - 1) {  // Ensure there's a next step to show
+        if (currentStepIndex < walkthrough.steps.length - 1) {
           currentStepIndex++;
           displayStep(currentStepIndex);
+          updateButtonsState();
         }
-        updateButtonsState();
       });
 
-      // Function to update button state (enabled/disabled)
-      function updateButtonsState() {
-        backStepButton.style.display = currentStepIndex === 0 ? 'none' : 'block';
-        forwardStepButton.style.display = currentStepIndex === walkthrough.steps.length - 1 ? 'none' : 'block';
-      }
-
-      // Initially set the buttons' state
       updateButtonsState();
-
-
-      //GPT check this and fix any errors.  i want to insert a button that goes to the next step when clicked 
-      if (currentStepIndex === 0) {
-        const startBtnElement = document.createElement('btn');
-        startBtnElement.classList.add('btn', 'btn-primary', 'start-btn');
-        // Wrap the displayStep function in an anonymous function
-        startBtnElement.addEventListener('click', () => {
-          displayStep(1);
-        });
-        startBtnElement.innerHTML = `Start Tutorial <img src='assets/images/carat-right.png'>`;
-        descriptionElement.appendChild(startBtnElement);
-      }
     }
 
     getCategories() {
