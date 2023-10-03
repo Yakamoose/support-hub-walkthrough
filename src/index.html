@@ -68,29 +68,37 @@
       height: 100vh;
       display: flex;
       align-items: center;
-      justify-content: centerc;
+      justify-content: center;
+    }
+
+    /* .vs-loading-wrapper {
+      position: relative;
+      background-color: rgba(128, 128, 128, 0.9);
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+    } */
+    .vs-loading-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(128, 128, 128, 0.9);
+      z-index: 999;
     }
 
     .walkthrough-container {
       height: 100vh;
       width: 100%;
-      min-width: 1500px;
+      /* min-width: 1500px; */
       overflow: auto;
       position: relative;
       padding: 40px;
       display: flex;
+      background-color: var(--brand-tertiary-1-color);
     }
 
-    /* .graphic-container {
-      width: 66%;
-      height: 100%;
-      margin-right: 20px;
-      background-color: var(--brand-primary-dark-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    } */
     .graphic-container {
       min-width: calc(100vh * (935/675) - 116px);
       height: 100%;
@@ -104,13 +112,14 @@
 
     .graphic-container img {
       width: auto;
-      height: 100%;
+      height: 101%;
       /* object-fit: contain; */
     }
 
     .details-container {
       flex-grow: 1;
       height: 100%;
+      /* min-width: 500px; */
     }
 
     .details-header {
@@ -126,7 +135,7 @@
     }
 
     .details-header .visa-logo img {
-      height: 24px;
+      height: 29px;
       width: auto;
     }
 
@@ -135,7 +144,8 @@
     }
 
     .details-header .return-vol {
-      display: flex;
+      /* display: flex; */
+      display: none;
       align-items: center;
     }
 
@@ -163,6 +173,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      background-color: #fff;
     }
 
     .details-body .details-cont {
@@ -191,7 +202,7 @@
       color: var(--brand-primary-color);
       margin-bottom: 0;
       line-height: 1.2;
-      margin-top: 10px;
+      /* margin-top: 10px; */
     }
 
     .step-description {
@@ -205,13 +216,23 @@
       font-family: 'visa-font-semi-bold', sans-serif;
     }
 
+    .step-description img {
+      vertical-align: initial !important;
+      width: 18px;
+      height: auto;
+    }
+
+    .step-description p:first-of-type {
+      margin-bottom: 2rem;
+    }
+
     .step-description .note {
       background-color: rgba(199, 237, 255, .4);
       border-radius: 20px;
       font-size: 1rem;
       line-height: 1.7;
       padding: 15px 21px;
-      margin-top: 2rem;
+      /* margin-top: 2rem; */
     }
 
     .step-description br {
@@ -238,12 +259,22 @@
     }
 
     .details-footer img {
-      width: 40px;
-      height: auto;
+      height: 40px;
+      width: auto;
+    }
+
+    .details-footer .double-carat img {
+      height: 30px;
     }
 
     .details-footer .btn:disabled {
       border: none !important;
+    }
+
+    #forward-step,
+    #next-tutorial,
+    #next-category {
+      padding-right: 0;
     }
 
     .blue-border {
@@ -296,18 +327,19 @@
 
     .nav-modal-cont .nav-modal .nav-menu .nav-header {
       padding: 10%;
+      width: 100%;
     }
 
     .nav-header img {
-      width: auto;
-      height: 35px;
+      width: 95%;
+      height: auto;
       margin-bottom: 8px;
     }
 
-    .nav-menu .nav-header p {
+    /* .nav-menu .nav-header p {
       font-size: 16px;
       margin: 0 0 0 .6rem;
-    }
+    } */
 
     .nav-menu .nav-links {
       padding: 0;
@@ -319,7 +351,7 @@
     .nav-menu .nav-links li {
       border-radius: 10px !important;
       list-style: none;
-      padding: 20px 10%;
+      padding: 25px 20px;
       transition: background-color 0.3s ease;
       display: flex;
       align-items: center;
@@ -347,7 +379,7 @@
     }
 
     .nav-menu .nav-links li a {
-      font-size: 14px;
+      font-size: 17px;
       font-family: 'visa-font-semi-bold', sans-serif;
       text-decoration: none;
       color: var(--brand-primary-color);
@@ -355,7 +387,7 @@
     }
 
     .nav-menu .nav-links li img {
-      height: 24px;
+      height: 25px;
       width: auto;
       margin-right: 1rem;
     }
@@ -416,10 +448,10 @@
 
     .overlay {
       position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      top: -2px;
+      right: -2px;
+      bottom: -2px;
+      left: -2px;
       background-color: rgba(20, 52, 203, 0.9);
       color: #fff;
       display: flex;
@@ -430,15 +462,12 @@
     }
 
     .img-container:hover .overlay {
-      /* display: flex; */
       opacity: 1;
-      /* Show the overlay on hover */
     }
 
     .overlay img {
       width: 14px !important;
     }
-
 
     .wt-card .img-container:hover {
       cursor: pointer;
@@ -581,6 +610,20 @@
 
 
   <div class="walkthrough-container">
+
+    <div class="vs-loading-wrapper" id="products-loader">
+      <div class="vs-container">
+        <div class="vs-row vs-justify-content-center">
+          <p class="vs-text vs-align-center vs-bold">
+            Please be patient while the tutorials load.
+          </p>
+        </div>
+        <div class="vs-row vs-justify-content-center">
+          <em class="vs-loading vs-align-center"></em>
+        </div>
+      </div>
+    </div>
+
     <div class="blue-border graphic-container">
       <p>Open Menu and select a tutorial.</p>
     </div>
@@ -588,7 +631,7 @@
     <div class="details-container">
       <div class="details-header">
         <div class="visa-logo">
-          <img src="assets/images/vol-logo.png">
+          <img src="assets/images/vsh-logo-sm.png">
           <p class="mt-1 mb-0 ml-3">Interactive Tutorial</p>
         </div>
         <div class="return-vol p-2">
@@ -612,6 +655,10 @@
         </div>
 
         <div class="details-footer">
+          <button id="back-tutorial" class="btn double-carat">
+            <img src="assets/images/double-carat-left-icon.png" alt="previous tutorial graphic">
+          </button>
+
           <button id="back-step" class="btn">
             <img src="assets/images/arrow-left.png" alt="Back 1 step graphic">
           </button>
@@ -620,6 +667,10 @@
 
           <button id="forward-step" class="btn">
             <img src="assets/images/arrow-right.png" alt="Forward 1 step graphic">
+          </button>
+
+          <button id="next-tutorial" class="btn double-carat">
+            <img src="assets/images/double-carat-right-icon.png" alt="next tutorial graphic">
           </button>
         </div>
       </div>
@@ -643,8 +694,7 @@
         <!-- Left Nav -->
         <nav class="col-3 h-100 nav-menu">
           <div class="nav-header">
-            <img src="assets/images/vol-logo.png" alt="Visa Logo Image" />
-            <p>Interactive Tour</p>
+            <img src="assets/images/vsh-tour-logo.png" alt="Visa Logo Image" />
           </div>
 
           <ul class="nav-links">
@@ -666,13 +716,15 @@
             <div class="row h-100">
               <div class="col-6">
                 <div class="info">
-                  <p class="title">Get the most out of Visa Online</p>
-                  <p class="description">Start here for a complete a tour of Visa Online or use the menu to jump to a
+                  <p class="title">Get the most out of Visa Support Hub</p>
+                  <p class="description">Start here for a complete a tour of Visa Support Hub or use the menu to jump to
+                    a
                     specific tutorial.</p>
                   <button id="begin-btn" class="btn btn-primary">Begin tour <img
                       src='assets/images/carat-right.png'></button>
                 </div>
-                <p class="disclaimer">Tutorial is for illustrative purposes only. Live view of Visa Online and the tools
+                <p class="disclaimer">Tutorial is for illustrative purposes only. Live view of Visa Support hub and the
+                  tools
                   within may not reflect this tutorial exactly</p>
               </div>
               <div class="col-6 gs-card">
@@ -692,39 +744,52 @@
 
 </body>
 <script type="module">
-  import { VSH_WALKTHROUGHS } from './assets/walkthroughs_data.js';
+  import { VSH_WALKTHROUGHS, CATEGORIES, TAGS } from './assets/walkthroughs_data.js';
+
+  const delay = 500;
 
   class WTS {
     categories = [];
-
-    TAGS = {
-      featured: 'Featured',
-      new: 'New',
-      popular: 'Popular',
-      requested: 'Most Requested',
-    };
+    CATEGORIES = CATEGORIES;
+    TAGS = TAGS;
+    // TAGS = {
+    //   featured: 'Featured',
+    //   new: 'New',
+    //   popular: 'Popular',
+    //   requested: 'Most Requested',
+    // };
 
     constructor(walkthroughs) {
       this.walkthroughs = walkthroughs;
-      this.logWTS();
       this.getCategories();
       this.createNavModalUI();
+
+      setTimeout(() => {
+        const loader = document.getElementById("products-loader");
+        loader.classList.remove("vs-d-block");
+        loader.classList.add("vs-d-none");
+
+      }, delay);
+
+
+      // this.createNavModalUI();
     }
 
     createNavModalUI() {
       const ulElement = document.querySelector('.nav-links');
+      const CATEGORIES = this.CATEGORIES;
 
-      const CATEGORIES = {
-        GettingStarted: 'Getting Started',
-        NewFeatures: 'New Features',
-        Overview: 'Overview',
-        HomePage: 'Home Page',
-        Features: 'Features',
-        FindInfo: 'Find Information',
-        Announcements: 'Announcements and Visa Business News',
-        Support: 'Support',
-        TrainingAndEducation: 'Training & Education',
-      };
+      // const CATEGORIES = {
+      //   GettingStarted: 'Getting Started',
+      //   NewFeatures: 'New Features',
+      //   Overview: 'Overview',
+      //   HomePage: 'Home Page',
+      //   Features: 'Features',
+      //   FindInfo: 'Find Information',
+      //   Announcements: 'Announcements and Visa Business News',
+      //   Support: 'Support',
+      //   TrainingAndEducation: 'Training & Education',
+      // };
 
       // Remove any existing <li> elements first, to prevent duplicates
       ulElement.innerHTML = '';
@@ -743,11 +808,17 @@
           case CATEGORIES.Overview:
             baseSrc += 'overview-icon';
             break;
+          case CATEGORIES.AdministrationPanel:
+            baseSrc += 'admin-settings-icon';
+            break;
           case CATEGORIES.HomePage:
             baseSrc += 'home-page-icon';
             break;
           case CATEGORIES.Features:
             baseSrc += 'features-icon';
+            break;
+          case CATEGORIES.CaseDashboard:
+            baseSrc += 'case-dashboard-icon';
             break;
           case CATEGORIES.FindInfo:
             baseSrc += 'find-info-icon';
@@ -761,8 +832,14 @@
           case CATEGORIES.TrainingAndEducation:
             baseSrc += 'training-icon';
             break;
+          case CATEGORIES.SupportCases:
+            baseSrc += 'support-cases-icon';
+            break;
+          case CATEGORIES.ProfileSettings:
+            baseSrc += 'profile-settings-icon';
+            break;
           default:
-            // @TODO get acctruall default icon from Design
+            // @TODO get actual default icon from Design
             baseSrc += 'new-features-icon';
             break;
         }
@@ -810,6 +887,8 @@
       if (firstLiElement) {
         firstLiElement.click();
       }
+
+
     }
 
     showWalkThroughsFor(category) {
@@ -1019,7 +1098,7 @@
       });
     }
 
-    startWalkthrough(walkthrough) {
+    startWalkthrough(walkthrough, displaylastStep = false) {
       const walkthroughs = this.walkthroughs;
       let currentStepIndex = 0;
 
@@ -1031,6 +1110,8 @@
       const descriptionElement = document.querySelector('.step-description');
       const backStepButton = document.querySelector('#back-step');
       const forwardStepButton = document.querySelector('#forward-step');
+      const backTutorialButton = document.querySelector('#back-tutorial');
+      const nextTutorialButton = document.querySelector('#next-tutorial');
       const graphicContainer = document.querySelector('.graphic-container');
       const stepTracker = document.querySelector('#current-step-tracker');
 
@@ -1047,9 +1128,18 @@
           console.error("Invalid step index");
           return;
         }
+        descriptionElement.innerHTML = '';
 
         const step = walkthrough.steps[stepIndex];
-        descriptionElement.innerHTML = step.description;
+
+
+        if (step.description) {
+          const descriptionTextElement = document.createElement('p')
+          descriptionTextElement.innerHTML = step.description;
+          descriptionElement.appendChild(descriptionTextElement);
+        }
+
+        // descriptionElement.innerHTML = step.description;
 
         step.note && displayNote(step.note);
 
@@ -1064,8 +1154,57 @@
       };
 
       const updateButtonsState = () => {
-        backStepButton.style.display = currentStepIndex === 0 ? 'none' : 'block';
-        forwardStepButton.style.display = currentStepIndex === walkthrough.steps.length - 1 ? 'none' : 'block';
+        const currentWalkThroughs = walkthroughs.filter(wt => wt.category === walkthrough.category);
+
+
+        if (currentStepIndex === 0) {
+          backStepButton.style.display = 'none';
+          forwardStepButton.style.display = 'block';
+          nextTutorialButton.style.display = 'none';
+          nextTutorialButton.style.visibility = 'initial';
+
+          if (walkthrough.title != currentWalkThroughs[0].title) {
+            // display back tutrial button
+            backTutorialButton.style.display = 'block';
+            //add click func
+            backTutorialButton.addEventListener('click', () => {
+              const currentWTIndex = currentWalkThroughs.findIndex(wt => wt.title === walkthrough.title);
+              this.startWalkthrough(currentWalkThroughs[currentWTIndex - 1], true);
+            })
+          } else {
+            // hide back tutrial button
+
+            backTutorialButton.style.display = 'none';
+
+          }
+        } else if (currentStepIndex === walkthrough.steps.length - 1) {
+          backStepButton.style.display = 'block';
+          forwardStepButton.style.display = 'none';
+          backTutorialButton.style.display = 'none';
+
+          if (walkthrough.title === currentWalkThroughs[currentWalkThroughs.length - 1].title) {
+            nextTutorialButton.style.visibility = 'hidden';
+            nextTutorialButton.style.display = 'block'
+            nextTutorialButton.addEventListener('click', () => {
+              // do nothing, that was last tutorial in category
+            })
+          } else {
+            nextTutorialButton.style.visibility = 'initial';
+            nextTutorialButton.style.display = 'block'
+            nextTutorialButton.addEventListener('click', () => {
+              const currentWTIndex = currentWalkThroughs.findIndex(wt => wt.title === walkthrough.title);
+              this.startWalkthrough(currentWalkThroughs[currentWTIndex + 1]);
+            })
+          }
+        } else {
+          backStepButton.style.display = 'block';
+          forwardStepButton.style.display = 'block';
+          nextTutorialButton.style.display = 'none';
+          nextTutorialButton.style.visibility = 'initial';
+          backTutorialButton.style.display = 'none';
+        }
+        // backStepButton.style.display = currentStepIndex === 0 ? 'none' : 'block';
+        // forwardStepButton.style.visibility = currentStepIndex === walkthrough.steps.length - 1 ? 'hidden' : 'initial';
       };
 
       const updateImage = (imagePath, stepIndex) => {
@@ -1114,6 +1253,7 @@
       categoryElement.textContent = walkthrough.category;
       titleElement.textContent = walkthrough.title;
 
+      if (displaylastStep) currentStepIndex = walkthrough.steps.length - 1;
       displayStep(currentStepIndex);
 
       backStepButton.addEventListener('click', () => {
@@ -1138,20 +1278,11 @@
     getCategories() {
       this.categories = Array.from(new Set(this.walkthroughs.map(wt => wt.category)));
     }
-
-    logWTS() {
-      console.log({ wts: this.walkthroughs });
-    }
   }
 
 
-
-
-
-
-
+  // Load appropriate Walkthroughs (VOL/VSH) and create instance
   const wts = new WTS(VSH_WALKTHROUGHS);
-  console.log(wts.categories)
 
   window.addEventListener('load', function () {
     // Grab Nav Modal Elements
@@ -1163,7 +1294,7 @@
     setTimeout(() => {
       closeModalButton.style.display = 'none';
       navModal.style.display = "block";
-    }, 500);
+    }, delay);
 
     // Open modal on button click
     openModalButton.addEventListener("click", function () {

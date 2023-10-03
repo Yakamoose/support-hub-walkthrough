@@ -4,7 +4,8 @@ export const CATEGORIES = {
     Overview: 'Overview',
     HomePage: 'Home Page',
     AdministrationPanel: 'Administration Panel',
-    ManageProfileSettings: 'Manage Profile Settings',
+    ProfileSettings: 'Profile Settings',
+    SupportCases: 'Support Cases',
     CaseDashboard: 'Case Dashboard',
     Features: 'Features',
     FindInfo: 'Find Information',
@@ -134,7 +135,7 @@ export const VSH_WALKTHROUGHS = [
             {
                 description: `In addition, if you are designated as an administrator for multiple organizations, you will need to first select the BID and country for the organization you would like to view or change.`,
                 imagePath: 'assets/images/VSH_assets/administration_panel/role_of_administrators/step_6.jpg'
-            }   
+            }
         ]
     },
     {
@@ -177,9 +178,9 @@ export const VSH_WALKTHROUGHS = [
         ]
     },
 
-    // Manage Profile Settings
+    // Profile Settings
     {
-        category: CATEGORIES.ManageProfileSettings,
+        category: CATEGORIES.ProfileSettings,
         categoryDescription: '*** How to manage settings.',
         title: 'Email Notifications & Additional Recipients',
         thumbnailPath: 'assets/images/VSH_assets/manage_profile_settings/email/thumbnail.jpg',
@@ -210,7 +211,7 @@ export const VSH_WALKTHROUGHS = [
         ]
     },
     {
-        category: CATEGORIES.ManageProfileSettings,
+        category: CATEGORIES.ProfileSettings,
         categoryDescription: '*** How to manage settings.',
         title: 'Access & locating your Administrator',
         thumbnailPath: 'assets/images/VSH_assets/manage_profile_settings/access_and_administration/thumbnail.jpg',
@@ -240,7 +241,7 @@ export const VSH_WALKTHROUGHS = [
         ]
     },
     {
-        category: CATEGORIES.ManageProfileSettings,
+        category: CATEGORIES.ProfileSettings,
         categoryDescription: '*** How to manage settings.',
         title: 'Edit Favorites',
         thumbnailPath: 'assets/images/VSH_assets/manage_profile_settings/edit_favorites/thumbnail.jpg',
@@ -271,9 +272,9 @@ export const VSH_WALKTHROUGHS = [
 
     },
 
-    // Case Dashboard Category
+    // Support Cases Category
     {
-        category: CATEGORIES.CaseDashboard,
+        category: CATEGORIES.SupportCases,
         categoryDescription: `*** How to create and manage cases.`,
         title: 'How to Create a Case',
         thumbnailPath: 'assets/images/VSH_assets/case_dashboard/create_a_case/thumbnail.jpg',
@@ -357,7 +358,7 @@ export const VSH_WALKTHROUGHS = [
         ]
     },
     {
-        category: CATEGORIES.CaseDashboard,
+        category: CATEGORIES.SupportCases,
         categoryDescription: `*** How to create and manage cases.`,
         title: 'How to Manage a Case',
         thumbnailPath: 'assets/images/VSH_assets/case_dashboard/manage_a_case/thumbnail.jpg',
@@ -381,61 +382,244 @@ export const VSH_WALKTHROUGHS = [
                 imagePath: 'assets/images/VSH_assets/case_dashboard/manage_a_case/step_3.jpg'
             },
             {
-                description: ``,
+                description: `When you find the desired case in the search results, click the <b>Case Number</b> link to open the case.`,
+                note: `You can export the cases by clicking the <b>Export to Excel</b> button and a CSV file will be downloaded.`,
                 imagePath: 'assets/images/VSH_assets/case_dashboard/manage_a_case/step_4.jpg'
             },
             {
-                description: ``,
+                description: `You can see, but not edit, the following details on the Case Details page: case topic, case number, status and last edit by Visa, case title, priority, and description.`,
+                note: `Depending on the case topic you may see additional items on the case details. Any areas that are not editable are displayed with a dotted outline.`,
                 imagePath: 'assets/images/VSH_assets/case_dashboard/manage_a_case/step_5.jpg'
             },
             {
-                description: ``,
+                description: `Use the <b>Activity pane</b> to review existing messages on the case.`,
                 imagePath: 'assets/images/VSH_assets/case_dashboard/manage_a_case/step_6.jpg'
             },
             {
-                description: ``,
+                description: `Click the <img src="assets/images/VSH_assets/case_dashboard/manage_a_case/enlarge-icon.png"> symbol to enlarge the message, and the <img src="assets/images/VSH_assets/case_dashboard/manage_a_case/respond-icon.png"> symbol to respond to that specific message in the thread.`,
                 imagePath: 'assets/images/VSH_assets/case_dashboard/manage_a_case/step_7.jpg'
             },
             {
-                description: ``,
+                description: `Click the <b>Attachments</b> tab to review attachments for the case.`,
                 imagePath: 'assets/images/VSH_assets/case_dashboard/manage_a_case/step_8.jpg'
             },
             {
-                description: ``,
+                description: `Use the text area at the top of the Activity pane to <b>add a message</b> to the case.`,
                 imagePath: 'assets/images/VSH_assets/case_dashboard/manage_a_case/step_9.jpg'
             },
             {
-                description: ``,
+                description: `Click the paper clip icon to <b>attach a file</b> to the message, if needed. `,
                 imagePath: 'assets/images/VSH_assets/case_dashboard/manage_a_case/step_10.jpg'
             },
             {
-                description: ``,
+                description: `Click <b>Submit</b> to send your message to the support team.`,
                 imagePath: 'assets/images/VSH_assets/case_dashboard/manage_a_case/step_11.jpg'
             },
             {
-                description: ``,
+                description: `In the left side of the Case details page, perform the following actions if needed:<br>Click the <b>Account Number</b> button to enter PAN data that will be encrypted once submitted.`,
                 imagePath: 'assets/images/VSH_assets/case_dashboard/manage_a_case/step_12.jpg'
             },
             {
-                description: ``,
+                description: `On the left side of the case details page, perform the following actions if needed:<br>Use the <b>Associated Case(s)</b> field to add cases you wish to associate by entering the case number and pressing Enter.`,
                 imagePath: 'assets/images/VSH_assets/case_dashboard/manage_a_case/step_13.jpg'
             },
             {
-                description: ``,
+                description: `Use the <b>Additional Notification Recipients</b> field to add or remove any users you have designated to receive notifications on the case. `,
                 imagePath: 'assets/images/VSH_assets/case_dashboard/manage_a_case/step_14.jpg'
             },
             {
-                description: ``,
+                description: `Users with access to Visa Online and the Visa Support Hub will see your case listed in their dashboard and can interact on your case. They will also receive email notifications unless they have turned these off in their profile settings.<br>To remove an email, click the <b>'X'</b> next to it.`,
                 imagePath: 'assets/images/VSH_assets/case_dashboard/manage_a_case/step_15.jpg'
             },
             {
-                description: ``,
+                description: `Click <b>Case History</b> to download a CSV file containing an audit trail of the case activities, and identification of who did them.`,
                 imagePath: 'assets/images/VSH_assets/case_dashboard/manage_a_case/step_16.jpg'
+            },
+            {
+                description: `If needed, click <b>Request to Cancel</b> to request cancellation of a case.`,
+                imagePath: 'assets/images/VSH_assets/case_dashboard/manage_a_case/step_17.jpg'
             }
-        ]        
-    }
-                
-        
-    
+        ]
+    },
+
+    // Case dashboard Category
+    {
+        category: CATEGORIES.CaseDashboard,
+        categoryDescription: `*** How to use various dashboard tools.`,
+        title: 'Overview of the dashboard',
+        thumbnailPath: 'assets/images/VSH_assets/how_to_use_dashboard/overview/thumbnail.jpg',
+        tags: [TAGS.new],
+        steps: [
+            {
+                description: `Your Visa Support Hub dashboard provides greater visibility into all your support cases. It displays a complete list of your cases, open or closed, as well as any cases where you have been assigned as a notification recipient.<br><b>This tutorial will walk you through how to use your dashboard on Visa Support Hub.</b>`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/overview/step_0.jpg',
+            },
+            {
+                description: `The Dashboard allows you to view active and inactive cases.<br>To access the Dashboard, Select <b>Case Dashboard</b> at the top of any Visa
+                Support Hub page`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/overview/step_1.jpg',
+            },
+            {
+                description: `From here, you can <b>Choose your dashboard view</b> to see either “My Cases,” “All Cases,” (if you have Expanded access) or “Cases I'm copied on”`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/overview/step_2.jpg',
+            },
+            {
+                description: `You can <b>Select filters or search for cases</b> by Status, Topic, Priority, Date Created, Case Owner and BID.`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/overview/step_3.jpg',
+            },
+            {
+                description: `You can also <b>search for cases</b> by entering a key word, case number or phrase OR you can also search <b>Search within messages.</b>`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/overview/step_4.jpg',
+            },
+            {
+                description: `The cases matching the filtered items will be displayed.`,
+                note: `If you have Standard access, you will only see your cases. If you have Expanded access, you will see all the cases within your organization.`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/overview/step_5.jpg',
+            },
+        ]
+    },
+    {
+        category: CATEGORIES.CaseDashboard,
+        categoryDescription: `*** How to use various dashboard tools.`,
+        title: 'Case Dashboard Features',
+        thumbnailPath: 'assets/images/VSH_assets/how_to_use_dashboard/features/thumbnail.jpg',
+        tags: [TAGS.featured, TAGS.popular],
+        steps: [
+            {
+                description: `<b>This tutorial will walk you through the features on your Case Dashboard.</b>`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/features/step_0.jpg',
+            },
+            {
+                description: `You will have great visibility into all your cases through your own dashboard.<br>To access the Dashboard, Select <b>Case Dashboard</b> at the top of any Visa Support Hub page`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/features/step_1.jpg',
+            },
+            {
+                description: `From here, you can:<br>Personalize your dashboard view.`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/features/step_2.jpg',
+            },
+            {
+                description: `From here, you can:<br><b>Search</b> cases and refine results
+                using <b>filters</b>`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/features/step_3.jpg',
+            },
+            {
+                description: `From here, you can:<br><b>Easily view, sort, or filter by case status.</b>`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/features/step_4.jpg',
+            },
+            {
+                description: `From here, you can:<br><b>Easily see new updates.</b>`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/features/step_5.jpg',
+            },
+            {
+                description: `From here, you can:<br><b>Quickly view case details and messaging with Visa.</b>`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/features/step_6.jpg',
+            },
+            {
+                description: `From here, you can:<br><b>Quickly create a new case.</b>`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/features/step_7.jpg',
+            },
+            {
+                description: `From here, you can:<br><b>Customize your columns view.</b>`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/features/step_8.jpg',
+            },
+            {
+                description: `From here, you can:<br>Select or deselect the columns you want to display or select or deselect <b>All.</b>`,
+                note: `Some columns are required and will always display.`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/features/step_9.jpg',
+            },
+            {
+                description: `From here, you can:<br><b>Consolidate access for users with multiple Visa Online profiles.</b>`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/features/step_10.jpg',
+            },
+            {
+                description: `From here, you can:<br><b>Quickly generate reports.</b>`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/features/step_11.jpg',
+            }
+        ]
+    },
+    {
+        category: CATEGORIES.CaseDashboard,
+        categoryDescription: `*** How to use various dashboard tools.`,
+        title: 'Searching for Cases',
+        thumbnailPath: 'assets/images/VSH_assets/how_to_use_dashboard/searching_for_cases/thumbnail.jpg',
+        tags: [],
+        steps: [
+            {
+                description: `Searching for cases can be done very simply by making an entry in the Search field.<br><b>This tutorial will walk you through how to search for cases in your case dashboard on Visa Support Hub.</b>`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/searching_for_cases/step_0.jpg',
+            },
+            {
+                description: `To search for a case, enter key words or case numbers in the Search field and press Enter.`,
+                note: `The search option includes the ability to search attached messages and emails by selecting the Include messages box.`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/searching_for_cases/step_1.jpg',
+            },
+            {
+                description: `If you select any filters, click APPLY to include the selected filters.`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/searching_for_cases/step_2.jpg',
+            },
+            {
+                description: `The search results will be listed below.`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/searching_for_cases/step_3.jpg',
+            },
+            {
+                description: `You can open and view a case by clicking the Case Number.`,
+                note: `You can export the cases by clicking the EXPORT TO EXCEL button and a CSV file will be downloaded.`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/searching_for_cases/step_4.jpg',
+            },
+        ]
+    },
+    {
+        category: CATEGORIES.CaseDashboard,
+        categoryDescription: `*** How to use various dashboard tools.`,
+        title: 'How to Use, Save and Edit Filters',
+        thumbnailPath: 'assets/images/VSH_assets/how_to_use_dashboard/how_to_filters/thumbnail.jpg',
+        tags: [TAGS.requested, TAGS.popular, TAGS.new],
+        steps: [
+            {
+                description: `Filters help you refine a search for cases; for instance, you might want to review only cases with Critical priority. You can filter by Status, Topic, Priority, Created (date), Owner, and BID.<br><b>This tutorial will walk you through how to use, save, and edit filters in your case dashboard on Visa Support Hub.</b>`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/how_to_filters/step_0.jpg'
+            },
+            {
+                description: `To use filters, select the drop-down for one or more filters to the right of “Your saved filter sets” tab.`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/how_to_filters/step_1.jpg'
+            },
+            {
+                description: `Select or deselect options or leave the default of All.`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/how_to_filters/step_2.jpg'
+            },
+            {
+                description: `After making changes to filters, click APPLY.`,
+                note: `The Status filter drop-down options are grouped in two, “All Active Statuses” and “All Inactive Statuses.” Make sure to scroll down to see all options in that filter if selecting any.`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/how_to_filters/step_3.jpg'
+            },
+            {
+                description: `If you use a certain set of filters often, you can save the filter by clicking the SAVE FILTER SET button.`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/how_to_filters/step_4.jpg'
+            },
+            {
+                description: `In the pop-up display, Enter a Filter Name and click the Save button.`,
+                note: `The saved filter will be listed in “Your saved filter sets” drop down.`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/how_to_filters/step_5.jpg'
+            },
+            {
+                description: `To rename or delete saved filters, Select the drop-down on “Your saved filter sets”.`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/how_to_filters/step_6.jpg'
+            },
+            {
+                description: `Click on the pencil symbol next to the name you assigned to a filter.`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/how_to_filters/step_7.jpg'
+            },
+            {
+                description: `From the pop-up display, Change the name and click on the SAVE button or click on DELETE FILTER SET and confirm.`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/how_to_filters/step_8.jpg'
+            },
+            {
+                description: `To update a saved filter:<br>While one of your filters is already applied to a search, and an additional filtering option is selected, you can update the applied filter by clicking on the UPDATE FILTER SET button.`,
+                imagePath: 'assets/images/VSH_assets/how_to_use_dashboard/how_to_filters/step_9.jpg'
+            },
+        ]
+    },
+
+
 ];
 
