@@ -71,13 +71,6 @@
       justify-content: center;
     }
 
-    /* .vs-loading-wrapper {
-      position: relative;
-      background-color: rgba(128, 128, 128, 0.9);
-      width: 100%;
-      height: 100%;
-      border-radius: 20px;
-    } */
     .vs-loading-wrapper {
       position: fixed;
       top: 0;
@@ -111,7 +104,7 @@
     }
 
     .graphic-container img {
-      width: auto;
+      width: 100%;
       height: 101%;
       /* object-fit: contain; */
     }
@@ -255,7 +248,7 @@
       font-family: 'visa-font', sans-serif;
       font-weight: 100;
       color: var(--brand-primary-color);
-      padding: 0 34px 23px;
+      padding: 0 22px 23px 34px;
     }
 
     .details-footer img {
@@ -265,16 +258,15 @@
 
     .details-footer .double-carat img {
       height: 30px;
+      /* margin-left: 10px; */
     }
 
     .details-footer .btn:disabled {
       border: none !important;
     }
 
-    #forward-step,
-    #next-tutorial,
-    #next-category {
-      padding-right: 0;
+    #next-tutorial {
+      margin-left: 10px;
     }
 
     .blue-border {
@@ -439,7 +431,8 @@
       /* In case the image is larger than its container */
     }
 
-    .img-container {
+    .img-container,
+    .gs-img-container {
       position: relative;
       overflow: hidden;
       display: inline-block;
@@ -459,17 +452,33 @@
       justify-content: center;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
+      font-family: "visa-font", sans-serif;
+
     }
 
-    .img-container:hover .overlay {
+    .img-container:hover .overlay,
+    .gs-img-container:hover .overlay {
       opacity: 1;
     }
 
-    .overlay img {
-      width: 14px !important;
+    .wt-card .overlay img {
+      width: 24px !important;
     }
 
-    .wt-card .img-container:hover {
+    .gs-card .overlay img {
+      width: 24px !important;
+    }
+
+    .gs-card .overlay {
+      font-size: 2rem;
+    }
+
+    .wt-card .overlay {
+      font-size: 2rem;
+    }
+
+    .wt-card .img-container:hover,
+    .gs-card .gs-img-container:hover {
       cursor: pointer;
     }
 
@@ -523,6 +532,10 @@
       height: 100%;
     }
 
+    .getting-started .row {
+      margin: 0 !important;
+    }
+
     .getting-started .col-6:first-of-type {
       display: flex;
       flex-direction: column;
@@ -538,34 +551,26 @@
       color: var(--brand-primary-color);
       font-size: 36px;
       line-height: 1.2;
-      font-family: "visa-font-semi-bold", sans-serif;
-    }
-
-    .getting-started #begin-btn {
-      /* display: flex;
-      align-items: center; */
-    }
-
-    .getting-started #begin-btn img {
-      /* height: 15px;
-      width: auto; */
-      /* margin-left: 11px; */
+      font-family: "visa-bold", sans-serif;
     }
 
     .getting-started .gs-card {
       border-radius: 20px;
       background-color: var(--brand-tertiary-2-color);
       padding: 30px;
-      height: 97%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      overflow: auto;
     }
+
+    .getting-started .gs-img-container {}
 
     .getting-started .gs-card img {
       width: 100%;
       height: auto;
-      margin-bottom: 10px;
+      /* margin-bottom: 10px; */
     }
 
     .getting-started .gs-card .title {
@@ -576,13 +581,18 @@
       margin-top: 20px;
     }
 
+    .getting-started .gs-card .title:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
     .getting-started .gs-card .description {
       font-size: 18px;
     }
 
     .getting-started .disclaimer {
       font-size: 10px;
-      margin-top: auto;
+      margin: 0 !important;
     }
 
     .btn-primary {
@@ -593,7 +603,7 @@
       align-items: center;
       letter-spacing: .5px;
       font-size: 1rem;
-      padding: 6px 15px
+      padding: 10px 25px
     }
 
     .btn-primary img {
@@ -655,6 +665,10 @@
         </div>
 
         <div class="details-footer">
+          <button id="back-category" class="btn triple-carat">
+            <img src="assets/images/triple-carat-left-icon.png" alt="previous category graphic">
+          </button>
+
           <button id="back-tutorial" class="btn double-carat">
             <img src="assets/images/double-carat-left-icon.png" alt="previous tutorial graphic">
           </button>
@@ -671,6 +685,10 @@
 
           <button id="next-tutorial" class="btn double-carat">
             <img src="assets/images/double-carat-right-icon.png" alt="next tutorial graphic">
+          </button>
+
+          <button id="next-category" class="btn triple-carat">
+            <img src="assets/images/triple-carat-right-icon.png" alt="previous category graphic">
           </button>
         </div>
       </div>
@@ -908,6 +926,9 @@
     }
 
     renderGettingStarted(walkthrough) {
+      const cardsContainer = document.querySelector('#cards-container');
+      cardsContainer.style.display = 'none';
+
       console.log({ walkthrough });
 
       // Clear contents
@@ -920,12 +941,29 @@
 
       const cardContainer = document.createElement('div');
 
+      const gsImgContainer = document.createElement('div');
+      gsImgContainer.classList.add('gs-img-container', 'blue-border');
+      gsImgContainer.addEventListener('click', () => {
+        this.startWalkthrough(walkthrough);
+      });
+      cardContainer.appendChild(gsImgContainer);
+
       // Insert thumbnail image into cardContainer
       const thumbnail = document.createElement('img');
       thumbnail.src = walkthrough.thumbnailPath;
       thumbnail.alt = walkthrough.title;
-      thumbnail.classList.add('blue-border')
-      cardContainer.appendChild(thumbnail);
+      gsImgContainer.appendChild(thumbnail);
+
+      const overlay = document.createElement('div');
+      overlay.classList.add('overlay');
+      overlay.textContent = 'Open tutorial';
+      gsImgContainer.appendChild(overlay);
+
+      const arrowImg = document.createElement('img');
+      arrowImg.src = 'assets/images/arrow-open.png';
+      arrowImg.alt = 'Open';
+      arrowImg.style.marginLeft = '1rem'; // to give some space between the text and the image
+      overlay.appendChild(arrowImg);
 
       // Insert tags as badges
       const tagsContainer = document.createElement('div');
@@ -941,6 +979,9 @@
       const title = document.createElement('h5');
       title.classList.add('title');
       title.textContent = walkthrough.title;
+      title.addEventListener('click', () => {
+        this.startWalkthrough(walkthrough);
+      });
       cardContainer.appendChild(title);
 
       // Insert description
@@ -1082,6 +1123,9 @@
     }
 
     renderCardsContainer(currentWalkThroughs) {
+      const container = document.querySelector('#cards-container');
+      container.style.display = 'block';
+
       const cardsContainer = document.querySelector('.cards');
       cardsContainer.innerHTML = '';
 
@@ -1112,6 +1156,8 @@
       const forwardStepButton = document.querySelector('#forward-step');
       const backTutorialButton = document.querySelector('#back-tutorial');
       const nextTutorialButton = document.querySelector('#next-tutorial');
+      const previousCategoryButton = document.querySelector('#back-category');
+      const nextCategoryButton = document.querySelector('#next-category');
       const graphicContainer = document.querySelector('.graphic-container');
       const stepTracker = document.querySelector('#current-step-tracker');
 
@@ -1162,6 +1208,7 @@
           forwardStepButton.style.display = 'block';
           nextTutorialButton.style.display = 'none';
           nextTutorialButton.style.visibility = 'initial';
+          nextCategoryButton.style.display = 'none';
 
           if (walkthrough.title != currentWalkThroughs[0].title) {
             // display back tutrial button
@@ -1170,24 +1217,48 @@
             backTutorialButton.addEventListener('click', () => {
               const currentWTIndex = currentWalkThroughs.findIndex(wt => wt.title === walkthrough.title);
               this.startWalkthrough(currentWalkThroughs[currentWTIndex - 1], true);
-            })
+            });
+            previousCategoryButton.style.display = 'none';
           } else {
             // hide back tutrial button
-
             backTutorialButton.style.display = 'none';
 
+            if (walkthrough.category != this.categories[0]) {
+              previousCategoryButton.style.display = 'block';
+              previousCategoryButton.addEventListener('click', () => {
+                // go to previous category's last tutorials last step
+                const prevCategoryIndex = this.categories.findIndex(cat => cat == walkthrough.category) - 1;
+                const prevCategoryWalkThoughs = walkthroughs.filter(wt => wt.category === this.categories[prevCategoryIndex]);
+                this.startWalkthrough(prevCategoryWalkThoughs[prevCategoryWalkThoughs.length - 1], true);
+              })
+            } else previousCategoryButton.style.display = 'none';
           }
+
         } else if (currentStepIndex === walkthrough.steps.length - 1) {
           backStepButton.style.display = 'block';
           forwardStepButton.style.display = 'none';
           backTutorialButton.style.display = 'none';
+          previousCategoryButton.style.display = 'none';
 
           if (walkthrough.title === currentWalkThroughs[currentWalkThroughs.length - 1].title) {
             nextTutorialButton.style.visibility = 'hidden';
-            nextTutorialButton.style.display = 'block'
+            nextTutorialButton.style.display = 'block';
             nextTutorialButton.addEventListener('click', () => {
               // do nothing, that was last tutorial in category
-            })
+            });
+
+            // if not in last category
+            if (walkthrough.category != this.categories[this.categories.length - 1]) {
+              // go to first tutorial in next category
+              nextCategoryButton.style.display = 'block';
+              nextCategoryButton.addEventListener('click', () => {
+                const nextCategoryIndex = this.categories.findIndex(cat => cat === walkthrough.category) + 1;
+                const nextCategoryWalkthroughs = walkthroughs.filter(wt => wt.category === this.categories[nextCategoryIndex]);
+                this.startWalkthrough(nextCategoryWalkthroughs[0]);
+              });
+              nextTutorialButton.style.display = 'none';
+            } else nextCategoryButton.style.display = 'none';
+
           } else {
             nextTutorialButton.style.visibility = 'initial';
             nextTutorialButton.style.display = 'block'
@@ -1202,9 +1273,9 @@
           nextTutorialButton.style.display = 'none';
           nextTutorialButton.style.visibility = 'initial';
           backTutorialButton.style.display = 'none';
+          previousCategoryButton.style.display = 'none';
+          nextCategoryButton.style.display = 'none';
         }
-        // backStepButton.style.display = currentStepIndex === 0 ? 'none' : 'block';
-        // forwardStepButton.style.visibility = currentStepIndex === walkthrough.steps.length - 1 ? 'hidden' : 'initial';
       };
 
       const updateImage = (imagePath, stepIndex) => {
