@@ -22,12 +22,13 @@ export const TAGS = {
 }
 
 // ***architecture / order in array = order presented in DOM
+// group walkthroughs by Category
 export const VSH_WALKTHROUGHS = [
     // Getting Started category
     // ***ONLY 1 to fit Getting Started Layout (different than others)
     {
         category: CATEGORIES.GettingStarted,
-        categoryDescription: "*** Lorem ipsum dolor sit amet. Nullam neque justo ante lorem amet. Ultrices eu nisl odio.",
+        categoryDescription: "See how to best share your thoughts and ideas with us through our new feedback form.",
         title: 'How to submit feedback',
         thumbnailPath: 'assets/images/popular_links/thumbnail.jpg',
         tags: [TAGS.featured, TAGS.new],
@@ -47,7 +48,7 @@ export const VSH_WALKTHROUGHS = [
     // Home Page Category
     {
         category: CATEGORIES.HomePage,
-        categoryDescription: '*** Exploring the various sections of the home page.',
+        categoryDescription: '*** Exploring the various sections of the home page. Exploring the various sections of the home page with longer text',
         title: 'How to navigate the home page',
         thumbnailPath: 'assets/images/VSH_assets/home_page/navigating/thumbnail.jpg',
         tags: [TAGS.popular],
@@ -619,7 +620,6 @@ export const VSH_WALKTHROUGHS = [
             },
         ]
     },
-
 
 ];
 

@@ -14,29 +14,30 @@
     @font-face {
       font-display: swap;
       font-family: "visa-font";
-      src: url('./assets/fonts/VisaDialect-Regular.ttf')
-        /* src: url("https://cdn.visa.com/v2/assets/fonts/types/OpenSans-Light.woff"); */
+      src: url('./assets/fonts/VisaDialect-Regular.ttf') format('truetype');
+      /* src: url("https://cdn.visa.com/v2/assets/fonts/types/OpenSans-Light.woff"); */
     }
 
     @font-face {
       font-display: swap;
       font-family: "visa-font-semi-bold";
-      src: url('./assets/fonts/VisaDialect-Semibold.ttf')
-        /* src: url("https://cdn.visa.com/v2/assets/fonts/types/OpenSans-SemiBold.woff"); */
+      src: url('./assets/fonts/VisaDialect-Semibold.ttf') format('truetype');
+      /* src: url("https://cdn.visa.com/v2/assets/fonts/types/OpenSans-SemiBold.woff"); */
     }
 
     @font-face {
       font-display: swap;
       font-family: 'visa-bold';
-      src: url('./assets/fonts/VisaDialect-Bold.ttf');
+      src: url('./assets/fonts/VisaDialect-Bold.ttf') format('truetype');
       /* src: url("https://cdn.visa.com/v2/assets/fonts/types/OpenSans-Bold.woff");
-         ???Not sure about this link */
+     ???Not sure about this link */
     }
 
     @font-face {
       font-family: 'visa-med';
-      src: url('./assets/fonts/VisaDialect-Medium.ttf');
+      src: url('./assets/fonts/VisaDialect-Medium.ttf') format('truetype');
     }
+
 
     :root {
       --brand-primary-color: #1434CB;
@@ -58,6 +59,7 @@
       --visa-light-blue: #2B94F5;
       --visa-rouge-red: #D65168;
       --visa-sorbet: #FFEF99;
+      --blue-border-width: 4px;
     }
 
     * {
@@ -69,6 +71,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      background-color: var(--brand-tertiary-1-color);
     }
 
     .vs-loading-wrapper {
@@ -96,7 +99,7 @@
       min-width: calc(100vh * (935/675) - 116px);
       height: 100%;
       margin-right: 20px;
-      background-color: var(--brand-primary-dark-color);
+      background-color: var(--brand-primary-color);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -104,9 +107,8 @@
     }
 
     .graphic-container img {
-      width: 100%;
+      width: 101%;
       height: 101%;
-      /* object-fit: contain; */
     }
 
     .details-container {
@@ -123,18 +125,18 @@
 
     .details-header div:first-of-type {
       margin-right: auto;
-      font-size: 14px;
+      /* font-size: 14px; */
       padding-right: 2rem;
     }
 
     .details-header .visa-logo img {
-      height: 29px;
+      height: 50px;
       width: auto;
     }
 
-    .details-header .visa-logo p {
+    /* .details-header .visa-logo p {
       margin: 5px 0 0 6px;
-    }
+    } */
 
     .details-header .return-vol {
       /* display: flex; */
@@ -175,7 +177,7 @@
 
     .details-body hr {
       border-color: var(--brand-primary-color);
-      border-width: 3px;
+      border-width: var(--blue-border-width);
       opacity: 1;
     }
 
@@ -185,16 +187,17 @@
 
     .wt-details .wt-category {
       font-family: 'visa-font-semi-bold', sans-serif;
-      font-size: 14px;
-      margin-bottom: 0;
+      font-size: 1rem;
+      margin-bottom: .5rem;
     }
 
     .wt-details .wt-title {
       font-family: 'visa-font-semi-bold', sans-serif;
-      font-size: 32px;
+      font-size: 39px;
       color: var(--brand-primary-color);
       margin-bottom: 0;
-      line-height: 1.2;
+      line-height: 1.1;
+      letter-spacing: -.5px;
       /* margin-top: 10px; */
     }
 
@@ -217,13 +220,15 @@
 
     .step-description p:first-of-type {
       margin-bottom: 2rem;
+      font-size: 1.3rem;
+      line-height: 1.2;
     }
 
     .step-description .note {
       background-color: rgba(199, 237, 255, .4);
       border-radius: 20px;
-      font-size: 1rem;
-      line-height: 1.7;
+      font-size: 1.1rem;
+      line-height: 1.5;
       padding: 15px 21px;
       /* margin-top: 2rem; */
     }
@@ -271,8 +276,14 @@
 
     .blue-border {
       border-radius: 20px;
-      border: 3px solid var(--brand-primary-color);
+      border: var(--blue-border-width) solid var(--brand-primary-color);
       overflow: hidden;
+    }
+
+    .img-container.blue-border:hover,
+    .gs-img-container.blue-border:hover {
+      border: var(--blue-border-width) solid transparent;
+      /* border: none; */
     }
 
 
@@ -296,7 +307,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(128, 128, 128, 0.9);
+      background-color: rgba(128, 128, 128, 1);
       padding: 40px;
       z-index: 1000;
       display: none;
@@ -312,30 +323,29 @@
       border-radius: 20px 0 0 20px;
       display: flex;
       flex-direction: column;
-      border-right: 3px solid var(--brand-primary-color);
+      border-right: var(--blue-border-width) solid var(--brand-primary-color);
       padding: 0;
       /* overflow: auto; */
+
+      flex: 0 0 auto;
+      width: 20%;
     }
 
     .nav-modal-cont .nav-modal .nav-menu .nav-header {
-      padding: 10%;
+      padding: 2.5rem 10% 1.5rem;
       width: 100%;
     }
 
     .nav-header img {
       width: 95%;
+      max-width: 300px;
       height: auto;
       margin-bottom: 8px;
     }
 
-    /* .nav-menu .nav-header p {
-      font-size: 16px;
-      margin: 0 0 0 .6rem;
-    } */
-
     .nav-menu .nav-links {
-      padding: 0;
-      margin: 0 15px;
+      padding: 0 1rem;
+      margin: 0;
       overflow: hidden auto;
 
     }
@@ -366,10 +376,6 @@
       color: #fff !important;
     }
 
-    .nav-menu .nav-links li:hover {
-      /* transform: scale(1.05); */
-    }
-
     .nav-menu .nav-links li a {
       font-size: 17px;
       font-family: 'visa-font-semi-bold', sans-serif;
@@ -385,16 +391,26 @@
     }
 
     .nav-modal-body-cont {
-      padding: 60px;
+      padding: 70px;
       position: relative;
       overflow: hidden auto;
       max-height: 100%;
+
+      flex: 0 0 auto;
+      width: 80%;
+    }
+    .nav-modal-body-cont .category-details .category-info {
+      max-width: 70%;
     }
 
     .nav-modal-body-cont .category-details h6 {
       color: var(--brand-primary-color);
-      font-size: 32px;
+      font-size: 46px;
       font-family: 'visa-font-semi-bold', sans-serif;
+    }
+
+    .nav-modal-body-cont .category-details p {
+      font-size: 1.4rem;
     }
 
     .nav-modal .close-btn {
@@ -409,26 +425,23 @@
     }
 
     .nav-modal .close-btn:hover {
-      transform: scale(1.5);
+      transform: scale(1.2);
+    }
+
+    .nav-modal .close-btn img {
+      height: 30px;
+      width: auto;
     }
 
     .cards-container {
       overflow-y: auto;
     }
 
-    .category-details {
-      margin-bottom: 30px;
-    }
-
     .wt-card {
-      /* overflow: hidden; */
       margin-bottom: 1rem;
       position: relative;
-
       display: block;
-      /* To ensure that the image takes up full width */
       max-width: 100%;
-      /* In case the image is larger than its container */
     }
 
     .img-container,
@@ -436,7 +449,6 @@
       position: relative;
       overflow: hidden;
       display: inline-block;
-      /* To fit the size of the image */
     }
 
     .overlay {
@@ -451,9 +463,9 @@
       align-items: center;
       justify-content: center;
       opacity: 0;
-      transition: opacity 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
       font-family: "visa-font", sans-serif;
-
+      border-radius: 20px;
     }
 
     .img-container:hover .overlay,
@@ -487,10 +499,21 @@
       height: auto;
     }
 
-    .badge {
+    .getting-started .badge {
+      margin: 1rem 1rem 0 0;
+      padding: 12px 25px;
+      border-radius: 5px !important;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+
+    }
+
+    .card-body .badge {
       margin: 12px 5px 0 0;
-      padding: 10px 15px;
-      border-radius: 3px !important;
+      padding: 10px 20px;
+      border-radius: 5px !important;
+      text-transform: uppercase;
     }
 
     .badge.blue {
@@ -513,7 +536,7 @@
     .card-title {
       margin-top: 12px;
       color: var(--brand-primary-color);
-      font-size: 18px;
+      font-size: 22px;
       font-family: "visa-font-semi-bold", sans-serif;
       width: fit-content;
     }
@@ -524,7 +547,7 @@
     }
 
     .cards .row {
-      margin-bottom: 30px;
+      margin-top: 40px;
     }
 
     .getting-started {
@@ -547,11 +570,16 @@
       padding-right: 2.5rem;
     }
 
+    .getting-started .info .description {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
     .getting-started .title {
       color: var(--brand-primary-color);
-      font-size: 36px;
-      line-height: 1.2;
-      font-family: "visa-bold", sans-serif;
+      font-size: 48px;
+      line-height: 1.1;
+      font-family: "visa-font-semi-bold", sans-serif;
     }
 
     .getting-started .gs-card {
@@ -565,19 +593,17 @@
       overflow: auto;
     }
 
-    .getting-started .gs-img-container {}
 
     .getting-started .gs-card img {
       width: 100%;
       height: auto;
-      /* margin-bottom: 10px; */
     }
 
     .getting-started .gs-card .title {
       color: var(--brand-primary-color);
-      font-size: 24px;
+      font-size: 28px;
       line-height: 1.2;
-      font-family: "visa-font-semi-bold", sans-serif;
+      font-family: "visa-bold", sans-serif;
       margin-top: 20px;
     }
 
@@ -586,8 +612,14 @@
       text-decoration: underline;
     }
 
-    .getting-started .gs-card .description {
-      font-size: 18px;
+    .getting-started .gs-card .description,
+    .getting-started .gs-card a {
+      font-size: 22px;
+      font-family: "visa-font-semi-bold", sans-serif;
+    }
+
+    .getting-started .gs-card a {
+      color: var(--brand-primary-color);
     }
 
     .getting-started .disclaimer {
@@ -602,13 +634,31 @@
       display: flex;
       align-items: center;
       letter-spacing: .5px;
-      font-size: 1rem;
+      font-size: 1.4rem;
       padding: 10px 25px
     }
 
     .btn-primary img {
       margin-left: 11px;
-      height: 15px;
+      height: 24px;
+      width: auto;
+    }
+
+    .step-description .btn-primary {
+      background-color: var(--brand-primary-color) !important;
+      border-color: var(--brand-primary-color) !important;
+      font-family: "visa-font-semi-bold", sans-serif;
+      display: flex;
+      align-items: center;
+      letter-spacing: .5px;
+      font-size: 1.2rem;
+      padding: 10px 25px;
+      line-height: 1;
+    }
+
+    .step-description .btn-primary img {
+      margin-left: 11px;
+      height: 20px;
       width: auto;
     }
   </style>
@@ -641,13 +691,13 @@
     <div class="details-container">
       <div class="details-header">
         <div class="visa-logo">
-          <img src="assets/images/vsh-logo-sm.png">
-          <p class="mt-1 mb-0 ml-3">Interactive Tutorial</p>
+          <img src="assets/images/vsh-tour-logo.png">
+          <!-- <p class="mt-1 mb-0 ml-3">Interactive Tutorial</p> -->
         </div>
-        <div class="return-vol p-2">
+        <!-- <div class="return-vol p-2">
           <p>Return to<br>Visa Online</p>
           <img src="assets/images/return-arrow.png">
-        </div>
+        </div> -->
         <button id="openModalButton" class="hamburger btn">
           <img src="assets/images/hamburger.png">
         </button>
@@ -688,7 +738,7 @@
           </button>
 
           <button id="next-category" class="btn triple-carat">
-            <img src="assets/images/triple-carat-right-icon.png" alt="previous category graphic">
+            <img src="assets/images/triple-carat-right-icon.png" alt="next category graphic">
           </button>
         </div>
       </div>
@@ -696,21 +746,13 @@
   </div>
 
 
-
-
-
-
-
-
-
-
-  <!-- Custom Modal -->
+  <!-- Tutorial Selector / Nav Modal -->
   <div id="navModal" class="nav-modal-cont">
-    <div class="container-fluid h-100 nav-modal blue-border">
+    <div class="vs-container-fluid h-100 nav-modal blue-border">
       <div class="row h-100">
 
-        <!-- Left Nav -->
-        <nav class="col-3 h-100 nav-menu">
+        <!-- Left Nav / Categories -->
+        <nav class=" h-100 nav-menu">
           <div class="nav-header">
             <img src="assets/images/vsh-tour-logo.png" alt="Visa Logo Image" />
           </div>
@@ -721,8 +763,10 @@
         </nav>
 
         <!-- Main Content -->
-        <div class="col-9 nav-modal-body-cont">
-          <span id="closeModalButton" class="close-btn">×</span>
+        <div class="nav-modal-body-cont">
+          <span id="closeModalButton" class="close-btn">
+            <img src="assets/images/close-icon.png">
+          </span>
 
           <div id="cards-container">
             <div class="category-details d-flex justify-content-between align-items-center"></div>
@@ -736,14 +780,12 @@
                 <div class="info">
                   <p class="title">Get the most out of Visa Support Hub</p>
                   <p class="description">Start here for a complete a tour of Visa Support Hub or use the menu to jump to
-                    a
-                    specific tutorial.</p>
+                    a specific tutorial.</p>
                   <button id="begin-btn" class="btn btn-primary">Begin tour <img
                       src='assets/images/carat-right.png'></button>
                 </div>
                 <p class="disclaimer">Tutorial is for illustrative purposes only. Live view of Visa Support hub and the
-                  tools
-                  within may not reflect this tutorial exactly</p>
+                  tools within may not reflect this tutorial exactly</p>
               </div>
               <div class="col-6 gs-card">
               </div>
@@ -770,12 +812,6 @@
     categories = [];
     CATEGORIES = CATEGORIES;
     TAGS = TAGS;
-    // TAGS = {
-    //   featured: 'Featured',
-    //   new: 'New',
-    //   popular: 'Popular',
-    //   requested: 'Most Requested',
-    // };
 
     constructor(walkthroughs) {
       this.walkthroughs = walkthroughs;
@@ -910,10 +946,10 @@
     }
 
     showWalkThroughsFor(category) {
-      console.log({ category });
+      // console.log({ category });
 
       const currentWalkThroughs = this.walkthroughs.filter(wt => wt.category === category);
-      console.log({ currentWalkThroughs });
+      // console.log({ currentWalkThroughs });
 
       if (category === 'Getting Started') {
         this.renderGettingStarted(currentWalkThroughs[0]);
@@ -1027,6 +1063,7 @@
       categoryDetailsContainer.innerHTML = '';
 
       const textContainer = document.createElement('div');
+      textContainer.classList.add('category-info');
       categoryDetailsContainer.appendChild(textContainer);
 
       const categoryHeading = document.createElement('h6');
