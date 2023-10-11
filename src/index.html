@@ -1194,7 +1194,6 @@
 
       // DOM Elements caching
       const navModal = document.querySelector('#navModal');
-      const closeModalButton = document.querySelector('#closeModalButton');
       const categoryElement = document.querySelector('.wt-category');
       const titleElement = document.querySelector('.wt-title');
       const descriptionElement = document.querySelector('.step-description');
@@ -1206,6 +1205,13 @@
       const nextCategoryButton = document.querySelector('#next-category');
       const graphicContainer = document.querySelector('.graphic-container');
       const stepTracker = document.querySelector('#current-step-tracker');
+      const closeModalButton = document.querySelector('#closeModalButton');
+
+      const closeBtnReplacement = closeModalButton.cloneNode(true);
+      closeBtnReplacement.addEventListener("click", () => {
+        navModal.style.display = "none";
+      })
+      closeModalButton.parentNode.replaceChild(closeBtnReplacement, closeModalButton);
 
       // Helper Functions
       const displayNote = (noteContent) => {
@@ -1366,7 +1372,6 @@
 
       // Initialize the walkthrough
       navModal.style.display = "none";
-      closeModalButton.style.display = 'block';
       categoryElement.textContent = walkthrough.category;
       titleElement.textContent = walkthrough.title;
 
@@ -1409,7 +1414,6 @@
 
     // Show the modal shortly after the page loads
     setTimeout(() => {
-      closeModalButton.style.display = 'none';
       navModal.style.display = "block";
     }, delay);
 
@@ -1421,6 +1425,7 @@
     // Close modal on button click
     closeModalButton.addEventListener("click", function () {
       navModal.style.display = "none";
+      wts.startWalkthrough(wts.walkthroughs[0])
     });
   });
 
