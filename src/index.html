@@ -80,7 +80,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background-color: rgba(128, 128, 128, 0.9);
+      background-color: rgba(128, 128, 128, 1);
       z-index: 999;
     }
 
@@ -385,7 +385,7 @@
     }
 
     .nav-menu .nav-links li img {
-      height: 25px;
+      height: 28px;
       width: auto;
       margin-right: 1rem;
     }
@@ -510,7 +510,7 @@
     }
 
     .card-body .badge {
-      margin: 12px 5px 0 0;
+      margin: 12px 9px 0 0;
       padding: 10px 20px;
       border-radius: 5px !important;
       text-transform: uppercase;
@@ -564,6 +564,7 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: flex-start;
+      padding-left: 0 !important;
     }
 
     .getting-started .col-6:first-of-type p {
@@ -654,6 +655,14 @@
       font-size: 1.2rem;
       padding: 10px 25px;
       line-height: 1;
+    }
+
+    .step-description .btn-primary:hover {
+      background-color: var(--brand-primary-light-color) !important;
+    }
+
+    .step-description .btn-primary:active {
+      background-color: var(--brand-primary-color) !important;
     }
 
     .step-description .btn-primary img {
