@@ -337,9 +337,9 @@
     }
 
     .nav-header img {
-      width: 95%;
+      width: auto;
       max-width: 300px;
-      height: auto;
+      height: 66px;
       margin-bottom: 8px;
     }
 
@@ -399,6 +399,7 @@
       flex: 0 0 auto;
       width: 80%;
     }
+
     .nav-modal-body-cont .category-details .category-info {
       max-width: 70%;
     }
@@ -676,8 +677,6 @@
 <body>
   <cb-root></cb-root>
 
-
-
   <div class="walkthrough-container">
 
     <div class="vs-loading-wrapper" id="products-loader">
@@ -700,7 +699,7 @@
     <div class="details-container">
       <div class="details-header">
         <div class="visa-logo">
-          <img src="assets/images/vsh-tour-logo.png">
+          <img class="tour-logo" src="assets/images/vsh-tour-logo.png">
           <!-- <p class="mt-1 mb-0 ml-3">Interactive Tutorial</p> -->
         </div>
         <!-- <div class="return-vol p-2">
@@ -763,7 +762,7 @@
         <!-- Left Nav / Categories -->
         <nav class=" h-100 nav-menu">
           <div class="nav-header">
-            <img src="assets/images/vsh-tour-logo.png" alt="Visa Logo Image" />
+            <img class="tour-logo" src="assets/images/vsh-tour-logo.png" alt="Visa Logo Image" />
           </div>
 
           <ul class="nav-links">
@@ -815,7 +814,7 @@
 <script type="module">
   import { VSH_WALKTHROUGHS, CATEGORIES, TAGS } from './assets/walkthroughs_data.js';
 
-  const delay = 500;
+  // const delay = 500;
 
   class WTS {
     categories = [];
@@ -834,25 +833,11 @@
 
       }, delay);
 
-
-      // this.createNavModalUI();
     }
 
     createNavModalUI() {
       const ulElement = document.querySelector('.nav-links');
       const CATEGORIES = this.CATEGORIES;
-
-      // const CATEGORIES = {
-      //   GettingStarted: 'Getting Started',
-      //   NewFeatures: 'New Features',
-      //   Overview: 'Overview',
-      //   HomePage: 'Home Page',
-      //   Features: 'Features',
-      //   FindInfo: 'Find Information',
-      //   Announcements: 'Announcements and Visa Business News',
-      //   Support: 'Support',
-      //   TrainingAndEducation: 'Training & Education',
-      // };
 
       // Remove any existing <li> elements first, to prevent duplicates
       ulElement.innerHTML = '';
@@ -950,15 +935,10 @@
       if (firstLiElement) {
         firstLiElement.click();
       }
-
-
     }
 
     showWalkThroughsFor(category) {
-      // console.log({ category });
-
       const currentWalkThroughs = this.walkthroughs.filter(wt => wt.category === category);
-      // console.log({ currentWalkThroughs });
 
       if (category === 'Getting Started') {
         this.renderGettingStarted(currentWalkThroughs[0]);
@@ -1402,32 +1382,65 @@
     }
   }
 
+  const delay = 500; // Define an appropriate delay time in milliseconds
 
-  // Load appropriate Walkthroughs (VOL/VSH) and create instance
-  const wts = new WTS(VSH_WALKTHROUGHS);
+  // Function to initialize Walkthroughs and create an instance
+  function initializeWalkthroughs(type) {
+    if (type !== 'vsh' && type !== 'vol') {
+      throw new Error("Invalid type. Expected 'vsh' or 'vol'.");
+    }
 
-  window.addEventListener('load', function () {
-    // Grab Nav Modal Elements
+    return new WTS(type === 'vsh' ? VSH_WALKTHROUGHS : VOL_WALKTHROUGHS);
+  }
+
+  // Function to replace images for VOL walkthroughs
+  function replaceVSHwithVOLImages() {
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('img.tour-logo').forEach((image) => {
+        image.src = "assets/images/vol-tour-logo.png";
+      });
+    });
+  }
+
+  // Function to manage the navigation modal
+  function manageNavModal(wts, delay) {
     const openModalButton = document.getElementById("openModalButton");
     const closeModalButton = document.getElementById("closeModalButton");
     const navModal = document.getElementById("navModal");
 
-    // Show the modal shortly after the page loads
-    setTimeout(() => {
-      navModal.style.display = "block";
-    }, delay);
+    // Show modal after a delay
+    // @TODO PROD - show navModal after assets load
+    setTimeout(() => navModal.style.display = "block", delay);
 
-    // Open modal on button click
-    openModalButton.addEventListener("click", function () {
+    openModalButton.addEventListener("click", () => {
       navModal.style.display = "block";
     });
 
-    // Close modal on button click
-    closeModalButton.addEventListener("click", function () {
+    closeModalButton.addEventListener("click", () => {
       navModal.style.display = "none";
-      wts.startWalkthrough(wts.walkthroughs[0])
+      wts.startWalkthrough(wts.walkthroughs[0]);
+      // replaceCloseModalButton(closeModalButton);  already handled in startWalkthrough()
     });
-  });
+  }
+
+  // Function to replace the close modal button functionality after a tutorial has been started
+  function replaceCloseModalButton(closeModalButton) {
+    if (closeModalButton && closeModalButton.parentNode) {
+      const closeBtnReplacement = closeModalButton.cloneNode(true);
+      closeBtnReplacement.addEventListener("click", () => {
+        document.getElementById("navModal").style.display = "none";
+      });
+      closeModalButton.parentNode.replaceChild(closeBtnReplacement, closeModalButton);
+    }
+  }
+
+  // Main execution
+  const wtType = 'vsh'; // 'vsh' or 'vol' //@TODO add VOL_WALKTHROUGHS to data file
+  const wts = initializeWalkthroughs(wtType);
+
+  if (wtType === 'vol') replaceVSHwithVOLImages();
+
+  window.addEventListener('load', () => manageNavModal(wts, delay));
 
 </script>
 
