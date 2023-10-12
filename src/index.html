@@ -823,6 +823,7 @@
 
     constructor(walkthroughs) {
       this.walkthroughs = walkthroughs;
+      this.cacheDOMElements();
       this.getCategories();
       this.createNavModalUI();
 
@@ -830,13 +831,31 @@
         const loader = document.getElementById("products-loader");
         loader.classList.remove("vs-d-block");
         loader.classList.add("vs-d-none");
-
       }, delay);
-
     }
 
+    cacheDOMElements() {
+      this.dom = {
+        navModal: document.querySelector('#navModal'),
+        ulElement: document.querySelector('.nav-links'),
+        categoryElement: document.querySelector('.wt-category'),
+        titleElement: document.querySelector('.wt-title'),
+        descriptionElement: document.querySelector('.step-description'),
+        backStepButton: document.querySelector('#back-step'),
+        forwardStepButton: document.querySelector('#forward-step'),
+        closeModalButton: document.querySelector('#closeModalButton'),
+        cardsContainer: document.querySelector('#cards-container'),
+        categoryDetails: document.querySelector('.category-details'),
+        cards: document.querySelector('.cards'),
+        gettingStartedContainer: document.querySelector('.getting-started .gs-card'),
+        startButton: document.getElementById('begin-btn'),
+        // ... (add other cached DOM elements here)
+      };
+    }
+
+
     createNavModalUI() {
-      const ulElement = document.querySelector('.nav-links');
+      const ulElement = this.dom.ulElement;
       const CATEGORIES = this.CATEGORIES;
 
       // Remove any existing <li> elements first, to prevent duplicates
