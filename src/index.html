@@ -847,7 +847,8 @@
         cardsContainer: document.querySelector('#cards-container'),
         categoryDetails: document.querySelector('.category-details'),
         cards: document.querySelector('.cards'),
-        gettingStartedContainer: document.querySelector('.getting-started .gs-card'),
+        gettingStartedContainer: document.querySelector('.getting-started'),
+        gettingStartedCard: document.querySelector('.getting-started .gs-card'),
         startButton: document.getElementById('begin-btn'),
         // ... (add other cached DOM elements here)
       };
@@ -970,18 +971,13 @@
     }
 
     renderGettingStarted(walkthrough) {
-      const cardsContainer = document.querySelector('#cards-container');
-      cardsContainer.style.display = 'none';
-
-      console.log({ walkthrough });
+      this.dom.cardsContainer.style.display = 'none';
 
       // Clear contents
-      document.querySelector('.category-details').innerHTML = '';
-      document.querySelector('.cards').innerHTML = '';
-      document.querySelector('.getting-started').style.display = 'block';
-
-      const gettingStartedContainer = document.querySelector('.gs-card');
-      gettingStartedContainer.innerHTML = '';
+      this.dom.categoryDetails.innerHTML = '';
+      this.dom.cards.innerHTML = '';
+      this.dom.gettingStartedCard.innerHTML = '';
+      this.dom.gettingStartedContainer.style.display = 'block';
 
       const cardContainer = document.createElement('div');
 
@@ -1035,12 +1031,11 @@
       cardContainer.appendChild(description);
 
       // Add click func to Begin Tour button
-      const startButton = document.getElementById('begin-btn');
-      startButton.addEventListener('click', () => {
+      this.dom.startButton.addEventListener('click', () => {
         this.startWalkthrough(walkthrough);
       });
 
-      gettingStartedContainer.appendChild(cardContainer);
+      this.dom.gettingStartedCard.appendChild(cardContainer);
 
       // Insert anchor link
       const anchor = document.createElement('a');
@@ -1050,7 +1045,7 @@
         e.preventDefault();
         this.startWalkthrough(walkthrough);
       });
-      gettingStartedContainer.appendChild(anchor);
+      this.dom.gettingStartedCard.appendChild(anchor);
     }
 
     getBadgeClass(tag) {
@@ -1064,15 +1059,12 @@
     }
 
     renderCategoryDetails(category, categoryDescription, firstWalkthrough) {
-      const gsContainer = document.querySelector('.getting-started')
-      gsContainer.style.display = 'none';
-
-      const categoryDetailsContainer = document.querySelector('.category-details');
-      categoryDetailsContainer.innerHTML = '';
+      this.dom.gettingStartedContainer.style.display = 'none';
+      this.dom.categoryDetails.innerHTML = '';
 
       const textContainer = document.createElement('div');
       textContainer.classList.add('category-info');
-      categoryDetailsContainer.appendChild(textContainer);
+      this.dom.categoryDetails.appendChild(textContainer);
 
       const categoryHeading = document.createElement('h6');
       categoryHeading.textContent = category;
@@ -1089,7 +1081,7 @@
       startTutorialBtn.addEventListener('click', () => {
         this.startWalkthrough(firstWalkthrough);
       });
-      categoryDetailsContainer.appendChild(startTutorialBtn);
+      this.dom.categoryDetails.appendChild(startTutorialBtn);
     }
 
     renderCard(walkthrough) {
@@ -1168,11 +1160,8 @@
     }
 
     renderCardsContainer(currentWalkThroughs) {
-      const container = document.querySelector('#cards-container');
-      container.style.display = 'block';
-
-      const cardsContainer = document.querySelector('.cards');
-      cardsContainer.innerHTML = '';
+      this.dom.cardsContainer.style.display = 'block';
+      this.dom.cards.innerHTML = '';
 
       let row;
 
@@ -1180,7 +1169,7 @@
         if (index % 3 === 0) {
           row = document.createElement('div');
           row.classList.add('row');
-          cardsContainer.appendChild(row);
+          this.dom.cards.appendChild(row);
         }
         const card = this.renderCard(walkthrough);
         row.appendChild(card);
@@ -1191,11 +1180,9 @@
       const walkthroughs = this.walkthroughs;
       let currentStepIndex = 0;
 
-      // DOM Elements caching
-      const navModal = document.querySelector('#navModal');
-      const categoryElement = document.querySelector('.wt-category');
-      const titleElement = document.querySelector('.wt-title');
-      const descriptionElement = document.querySelector('.step-description');
+      // DOM Elements from cache
+      const { navModal, categoryElement, titleElement, descriptionElement } = this.dom;
+
       const backStepButton = document.querySelector('#back-step');
       const forwardStepButton = document.querySelector('#forward-step');
       const backTutorialButton = document.querySelector('#back-tutorial');
@@ -1226,26 +1213,18 @@
           return;
         }
         descriptionElement.innerHTML = '';
-
         const step = walkthrough.steps[stepIndex];
-
-
         if (step.description) {
           const descriptionTextElement = document.createElement('p')
           descriptionTextElement.innerHTML = step.description;
           descriptionElement.appendChild(descriptionTextElement);
         }
-
-        // descriptionElement.innerHTML = step.description;
-
         step.note && displayNote(step.note);
-
         if (stepIndex === 0) {
           appendStartButton();
         } else if (stepIndex === walkthrough.steps.length - 1) {
           appendNextOrMenuButton();
         }
-
         updateImage(step.imagePath, stepIndex);
         stepTracker.textContent = `${stepIndex + 1} / ${walkthrough.steps.length}`;
       };
